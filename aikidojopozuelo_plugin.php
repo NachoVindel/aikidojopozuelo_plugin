@@ -138,7 +138,11 @@ function my_get_user_exam_date($atts)
     ), $atts ) );
     
     if ($fecha != '')
-        $out .= esc_html(date_format(date_create( get_user_meta( $user->id, $fecha, true ) ),'d-m-Y'));
+    {
+        $fecha_date = date_create( get_user_meta( $user->id, $fecha, true ));
+        if ($fecha_date != date('d-m-Y'))
+            $out .= esc_html(date_format( $fecha_date ),'d-m-Y');
+    }
     
     switch($out)
     {
