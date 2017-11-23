@@ -125,6 +125,35 @@ function my_get_users_dans_dates($atts = null)
 	return $out;
 
 }
+
+
+add_shortcode('user_exam_date','my_get_user_exam_date');
+function my_get_user_exam_date($atts)
+{
+	$out = '';
+	$user = wp_get_current_user();
+	
+	extract( shortcode_atts( array(
+        'fecha' => ''
+    ), $atts ) );
+    
+    if ($fecha != '')
+        $out .= esc_html(date_format(date_create( get_user_meta( $user->id, $fecha, true ) ),'d-m-Y'));
+    
+    switch($out)
+    {
+        case '':
+            $out .= 'No realizado todavía';
+            break;
+            
+        defaul:
+            break;
+            
+    }
+    
+	return $out;
+
+}
  
  
 /**
