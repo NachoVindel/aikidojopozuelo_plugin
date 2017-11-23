@@ -59,6 +59,74 @@ register_deactivation_hook( __FILE__, 'deactivate_aikidojopozuelo_plugin' );
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-aikidojopozuelo_plugin.php';
 
+
+ 
+ 
+ add_shortcode('user_kyus_dates','my_get_users_kyus_dates');
+function my_get_users_kyus_dates($atts = null)
+{
+	$out = '';
+	
+    $user = wp_get_current_user();
+    
+    $array = array();
+    
+    if (!empty($user->fecha_5kyu))
+        $array["Fecha 5º Kyu"] = $user->fecha_5kyu;
+        
+    if (!empty($user->fecha_4kyu))
+        $array["Fecha 4º Kyu"] = $user->fecha_4kyu;
+        
+    if (!empty($user->fecha_3kyu))
+        $array["Fecha 3º Kyu"] = $user->fecha_3kyu;
+        
+    if (!empty($user->fecha_2kyu))
+        $array["Fecha 2º Kyu"] = $user->fecha_2kyu;
+        
+    if (!empty($user->fecha_1kyu))
+        $array["Fecha 1º Kyu"] = $user->fecha_1kyu;
+    
+    
+    foreach ($array as $key => $value)
+    {
+        $out.= '<span>' . esc_html( $key ) . ': ' . esc_html( date_format(date_create($value),'d-m-Y') ) . '</span><br/>';
+    }
+	
+	return $out;
+
+}
+
+add_shortcode('user_dans_dates','my_get_users_dans_dates');
+function my_get_users_dans_dates($atts = null)
+{
+	$out = '';
+	
+    $user = wp_get_current_user();
+    
+    $array = array();
+    
+    if (!empty($user->fecha_5kyu))
+        $array["Fecha Shodan"] = $user->fecha_shodan;
+        
+    if (!empty($user->fecha_4kyu))
+        $array["Fecha Nidan"] = $user->fecha_nidan;
+        
+    if (!empty($user->fecha_3kyu))
+        $array["Fecha Sandan"] = $user->fecha_sandan;
+        
+    if (!empty($user->fecha_2kyu))
+        $array["Fecha Yondan"] = $user->fecha_yondan;
+    
+    foreach ($array as $key => $value)
+    {
+        $out.= '<span>' . esc_html( $key ) . ': ' . esc_html( date_format(date_create($value),'d-m-Y') ) . '</span><br/>';
+    }
+	
+	return $out;
+
+}
+ 
+ 
 /**
  * Begins execution of the plugin.
  *
