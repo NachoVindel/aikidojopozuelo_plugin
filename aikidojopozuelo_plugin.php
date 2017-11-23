@@ -119,7 +119,7 @@ function my_get_users_dans_dates($atts = null)
     
     foreach ($array as $key => $value)
     {
-        $out.= '<span>' . esc_html( $key ) . ': ' . esc_html( date_format(date_create($value),'d-m-Y') ) . '</span><br/>';
+        $out.= '<span>' . esc_html( $key ) . ': *****' . esc_html( date_format(date_create($value),'d-m-Y') ) . '</span><br/>';
     }
 	
 	return $out;
