@@ -148,7 +148,7 @@ function my_get_user_exam_date($atts)
     switch($out)
     {
         case '':
-            $out .= 'No realizado todavía';
+            $out .= 'No realizado todavía!';
             break;
             
         defaul:
