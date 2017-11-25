@@ -169,7 +169,7 @@ function adp_format_date ($date)
     $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
  
     //$date = date_create($date_in);
-    return $dias[$date->format('w')] . " " . $date->format('d') . " de " . $meses[$date->format('n')] . " del " . $date->format('Y') ;
+    return $dias[$date->format('w')] . " " . $date->format('j') . " de " . $meses[$date->format('n')] . " del " . $date->format('Y') ;
     //return $date_in->format('l d-F-Y');//->format('w') ;//. " " . $date('d') . " de " . $date('n') . " del " . $date('Y') ;
     //return $date->format('l d-F-Y');
 }
@@ -191,7 +191,7 @@ function my_get_user_date($atts)
         
         //if ($fecha != date('l d-F-Y'))
         //    $out .= esc_html( $fecha );
-        if ($d_fecha != date())
+        if ($d_fecha->format('Ymd') != date('Ymd'))
             $out = adp_format_date($d_fecha);
     }
     
