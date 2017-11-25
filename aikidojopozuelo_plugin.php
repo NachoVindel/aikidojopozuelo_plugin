@@ -168,7 +168,7 @@ function adp_format_date ($date)
     $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
     $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
  
-    return $dias[$date('w')]." ".$date('d')." de ".$meses[$date('n')-1]. " del ".$date('Y') ;
+    return $dias[$date('w')]." ".$date('d')." de ".$meses[$date('m')-1]. " del ".$date('Y') ;
 
 }
 
@@ -189,8 +189,8 @@ function my_get_user_date($atts)
         
         //if ($fecha != date('l d-F-Y'))
         //    $out .= esc_html( $fecha );
-        //if ($d_fecha != date())
-            //$out = adp_format_date($d_fecha);
+        if ($d_fecha != date())
+            $out = adp_format_date($d_fecha);
     }
     
     /*
