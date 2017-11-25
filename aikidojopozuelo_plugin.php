@@ -170,7 +170,7 @@ function adp_format_date ($date_in)
  
     $date = date_create($date_in);
     //return $dias[$date('w')] . " " . $date('d') . " de " . $meses[$date('n')] . " del " . $date('Y') ;
-    return $date('w') ;//. " " . $date('d') . " de " . $date('n') . " del " . $date('Y') ;
+    return $date->format('w') ;//. " " . $date('d') . " de " . $date('n') . " del " . $date('Y') ;
     //return $date->format('l d-F-Y');
 }
 
