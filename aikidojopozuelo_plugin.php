@@ -132,9 +132,16 @@ function my_get_user_datediff($atts)
 {
     $out = '';
 	extract( shortcode_atts( array(
-        'fecha_inicio' =>  date_create(),
-        'fecha_fin' => date_create()
+        'fecha_inicio' =>  '',
+        'fecha_fin' => ''
     ), $atts ) );
+    
+    if ($fecha_inicio = '')
+        $d_fecha_inicio = date_create();
+    else
+        $d_fecha_inicio = date_create_from_format(my_get_user_date ('$fecha_inicio'));
+    
+    
     
     $date_diff = date_diff($fecha_fin, $fecha_inicio, true);
     
@@ -156,8 +163,8 @@ function my_get_user_datediff($atts)
     return $out;
 }
 
-add_shortcode('user_exam_date','my_get_user_exam_date');
-function my_get_user_exam_date($atts)
+add_shortcode('user_date','my_get_user_date');
+function my_get_user_date($atts)
 {
 	$out = '';
 	$user = wp_get_current_user();
@@ -168,7 +175,7 @@ function my_get_user_exam_date($atts)
     
     if ($fecha != '')
     {
-        $fecha = date_format(date_create( get_user_meta( $user->id, $fecha, true )),'d de M, Y');
+        $fecha = date_format(date_create( get_user_meta( $user->id, $fecha, true )),'d-m-Y');
         
         if ($fecha != date('d-m-Y'))
             $out .= esc_html( $fecha );
@@ -177,7 +184,7 @@ function my_get_user_exam_date($atts)
     switch($out)
     {
         case '':
-            $out .= 'No realizado todavía!';
+            $out .= '';
             break;
             
         defaul:
