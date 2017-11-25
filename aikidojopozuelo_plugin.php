@@ -168,7 +168,8 @@ function adp_format_date ($date)
     $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
     $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
  
-    return $dias[$date('w')] . " " . $date('d') . " de " . $meses[$date('n')] . " del ".$date('Y') ;
+    //return $dias[$date('w')] . " " . $date('d') . " de " . $meses[$date('n')] . " del " . $date('Y') ;
+    return $date('w') . " " . $date('d') . " de " . $date('n') . " del " . $date('Y') ;
     //return $date->format('l d-F-Y');
 }
 
