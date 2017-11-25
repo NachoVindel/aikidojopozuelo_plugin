@@ -175,7 +175,7 @@ function my_get_user_date($atts)
     
     if ($fecha != '')
     {
-        $fecha = date_format(date_create( get_user_meta( $user->id, $fecha, true )),'d-m-Y');
+        $fecha = date_format(date_create( get_user_meta( $user->id, $fecha, true )),'D d-F-Y');
         
         if ($fecha != date('d-m-Y'))
             $out .= esc_html( $fecha );
