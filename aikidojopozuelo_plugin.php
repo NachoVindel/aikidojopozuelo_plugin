@@ -189,8 +189,8 @@ function my_get_user_date($atts)
         
         //if ($fecha != date('l d-F-Y'))
         //    $out .= esc_html( $fecha );
-        if ($d_fecha != date())
-            $out = adp_format_date($d_fecha);
+        //if ($d_fecha != date())
+            //$out = adp_format_date($d_fecha);
     }
     
     /*
