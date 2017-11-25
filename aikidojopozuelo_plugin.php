@@ -168,8 +168,8 @@ function adp_format_date ($date)
     $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
     $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
  
-    //return $dias[$date('w')]." ".$date('d')." de ".$meses[$date('m')-1]. " del ".$date('Y') ;
-    return $date->format('l d-F-Y');
+    return $dias[$date('w')]." ".$date('d')." de ".$meses[$date('n')]. " del ".$date('Y') ;
+    //return $date->format('l d-F-Y');
 }
 
 add_shortcode('user_date','my_get_user_date');
