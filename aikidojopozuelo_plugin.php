@@ -166,6 +166,7 @@ function my_get_user_datediff($atts)
 add_shortcode('user_date','my_get_user_date');
 function my_get_user_date($atts)
 {
+	setlocale(LC_ALL,"es_ES");
 	$out = '';
 	$user = wp_get_current_user();
 	
@@ -175,9 +176,9 @@ function my_get_user_date($atts)
     
     if ($fecha != '')
     {
-        $fecha = date_format(date_create( get_user_meta( $user->id, $fecha, true )),'D d-F-Y');
+        $fecha = date_format(date_create( get_user_meta( $user->id, $fecha, true )),'l d-F-Y');
         
-        if ($fecha != date('d-m-Y'))
+        if ($fecha != date('l d-F-Y'))
             $out .= esc_html( $fecha );
     }
     
