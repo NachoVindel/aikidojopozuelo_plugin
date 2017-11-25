@@ -127,6 +127,35 @@ function my_get_users_dans_dates($atts = null)
 }
 
 
+add_shortcode('user_datediff','my_get_user_datediff');
+function my_get_user_datediff($atts)
+{
+    $out = '';
+	extract( shortcode_atts( array(
+        'fecha_inicio' =>  date_create(),
+        'fecha_fin' => date_create()
+    ), $atts ) );
+    
+    $date_diff = date_diff($fecha_fin, $fecha_inicio, true);
+    
+    if ($date_diff->years > 1)
+        $out .= $date_diff->years . ' años, ';
+    elseif ($date_diff->years = 1)
+        $out .= '1 año, ';
+        
+    if ($date_diff->months = 1)
+        $out .= '1 mes, ';
+    else
+        $out .= $date_diff->months . ' meses, ';
+        
+    if ($date_diff->days = 1)
+        $out .= '1 día.';
+    else
+        $out .= $date_diff->months . ' días.';
+    
+    return $out;
+}
+
 add_shortcode('user_exam_date','my_get_user_exam_date');
 function my_get_user_exam_date($atts)
 {
@@ -139,7 +168,7 @@ function my_get_user_exam_date($atts)
     
     if ($fecha != '')
     {
-        $fecha = date_format(date_create( get_user_meta( $user->id, $fecha, true )),'d-m-Y');
+        $fecha = date_format(date_create( get_user_meta( $user->id, $fecha, true )),'d de M, Y');
         
         if ($fecha != date('d-m-Y'))
             $out .= esc_html( $fecha );
