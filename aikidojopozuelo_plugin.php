@@ -136,16 +136,13 @@ function adp_format_date ($date)
     return $dias[$date->format('w')] . " " . $date->format('j') . " de " . $meses[$date->format('n')] . " del " . $date->format('Y') ;
 }
 
-function adp_user_get_date($atts)
+function adp_user_get_date($fecha='')
 {
-    $user = wp_get_current_user();
-	
-	extract( shortcode_atts( array(
-        'fecha' => ''
-    ), $atts ) );
-    
     if ($fecha != '')
+    {
+        $user = wp_get_current_user();
         $d_fecha = date_create( get_user_meta( $user->id, $fecha, true ) );
+    }
     else
         $d_fecha = date_create();
     
@@ -156,17 +153,18 @@ add_shortcode('user_date','my_get_user_date');
 function my_get_user_date($atts)
 {
 	$out = '';
-	/*$user = wp_get_current_user();
+	//$user = wp_get_current_user();
 	
 	extract( shortcode_atts( array(
         'fecha' => ''
     ), $atts ) );
     
+    /*
     if ($fecha != '')
     {
         $d_fecha = date_create( get_user_meta( $user->id, $fecha, true ) );
     */    
-        $d_fecha = adp_user_get_date($atts);
+        $d_fecha = adp_user_get_date($fecha);
         if ($d_fecha->format('Ymd') != date('Ymd'))
             $out = adp_format_date($d_fecha);
     //}
@@ -188,8 +186,8 @@ function my_get_user_datediff($atts)
     echo $fecha_inicio;
     echo $fecha_fin;
     
-    $d_fecha_inicio = date_create(adp_user_get_date('fecha="'.$fecha_inicio.'"'));
-    $d_fecha_fin = date_create(adp_user_get_date('fecha="'.$fecha_fin.'"'));
+    $d_fecha_inicio = date_create(adp_user_get_date($fecha_inicio));
+    $d_fecha_fin = date_create(adp_user_get_date($fecha_fin));
     
     echo $d_fecha_inicio->format('d-m-Y');
     echo $d_fecha_fin->format('d-m-Y');
