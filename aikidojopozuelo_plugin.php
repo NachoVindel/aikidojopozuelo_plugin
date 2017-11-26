@@ -189,8 +189,8 @@ function my_get_user_datediff($atts)
     $d_fecha_inicio = adp_user_get_date($fecha_inicio);
     $d_fecha_fin = adp_user_get_date($fecha_fin);
     
-    echo 'inicio: '.$d_fecha_inicio->format('d-m-Y').'<br/>';
-    echo 'fin: '.$d_fecha_fin->format('d-m-Y').'<br/>';
+    //echo 'inicio: '.$d_fecha_inicio->format('d-m-Y').'<br/>';
+    //echo 'fin: '.$d_fecha_fin->format('d-m-Y').'<br/>';
     
     $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio, TRUE);
     
