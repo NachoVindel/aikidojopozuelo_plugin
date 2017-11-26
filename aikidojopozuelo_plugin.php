@@ -167,11 +167,11 @@ function my_get_user_datediff($atts)
         'fecha_inicio' => '',
         'fecha_fin' => ''
     ), $atts ) );
-    
+    echo '***';
     $d_fecha_inicio = date_create(my_get_user_date('fecha='.$fecha_inicio));
     $d_fecha_fin = date_create(my_get_user_date('fecha='.$fecha_fin));
     
-    $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio, true);
+    $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio, TRUE);
     
     if ($date_diff->years > 1)
         $out .= $date_diff->years . ' años, ';
