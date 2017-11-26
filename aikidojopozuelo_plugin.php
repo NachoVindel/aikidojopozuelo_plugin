@@ -194,22 +194,24 @@ function my_get_user_datediff($atts)
     
     $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio, TRUE);
     
+    if ($date_diff->days > 0)
+    {
     
-    
-    if ($date_diff->y > 1)
-        $out .= $date_diff->y . ' años, ';
-    elseif ($date_diff->y == 1)
-        $out .= '1 año, ';
-        
-    if ($date_diff->m == 1)
-        $out .= '1 mes, ';
-    else
-        $out .= $date_diff->m . ' meses, ';
-        
-    if ($date_diff->d == 1)
-        $out .= '1 día';
-    else
-        $out .= $date_diff->d . ' días';
+        if ($date_diff->y > 1)
+            $out .= $date_diff->y . ' años, ';
+        elseif ($date_diff->y == 1)
+            $out .= '1 año, ';
+            
+        if ($date_diff->m == 1)
+            $out .= '1 mes, ';
+        else
+            $out .= $date_diff->m . ' meses, ';
+            
+        if ($date_diff->d == 1)
+            $out .= '1 día';
+        else
+            $out .= $date_diff->d . ' días';
+    }
     
     return $out;
 }
