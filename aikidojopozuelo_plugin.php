@@ -183,14 +183,14 @@ function my_get_user_datediff($atts)
         'fecha_fin' => ''
     ), $atts ) );
     
-    echo $fecha_inicio;
-    echo $fecha_fin;
+    //echo $fecha_inicio;
+    //echo $fecha_fin;
     
-    $d_fecha_inicio = date_create(adp_user_get_date($fecha_inicio));
-    //$d_fecha_fin = date_create(adp_user_get_date($fecha_fin));
+    $d_fecha_inicio = adp_user_get_date($fecha_inicio);
+    $d_fecha_fin = adp_user_get_date($fecha_fin);
     
-    echo $d_fecha_inicio->format('d-m-Y');
-    /*echo $d_fecha_fin->format('d-m-Y');
+    //echo $d_fecha_inicio->format('d-m-Y');
+    //echo $d_fecha_fin->format('d-m-Y');
     
     $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio, TRUE);
     
@@ -208,7 +208,7 @@ function my_get_user_datediff($atts)
         $out .= '1 día';
     else
         $out .= $date_diff->months . ' días';
-    */
+    
     return $out;
 }
 
