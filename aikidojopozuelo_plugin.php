@@ -130,10 +130,10 @@ function my_get_users_dans_dates($atts = null)
 
 function adp_format_date ($date)
 {
-    $dias = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
-    $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+    $dias = array("D","L","M","X","J","V","S");
+    $meses = array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
 
-    return $dias[$date->format('w')] . " " . $date->format('j') . " de " . $meses[$date->format('n')] . " del " . $date->format('Y') ;
+    return '('.$dias[$date->format('w')] . ") " . $date->format('j') . "-" . $meses[$date->format('n')] . "-" . $date->format('Y') ;
 }
 
 function adp_user_get_date($fecha='')
