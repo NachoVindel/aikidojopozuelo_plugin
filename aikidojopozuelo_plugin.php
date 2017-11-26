@@ -192,7 +192,7 @@ function my_get_user_datediff($atts)
     //echo 'inicio: '.$d_fecha_inicio->format('d-m-Y').'<br/>';
     //echo 'fin: '.$d_fecha_fin->format('d-m-Y').'<br/>';
     
-    $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio, TRUE);
+    $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio);
     
     if ($date_diff->days > 0)
     {
