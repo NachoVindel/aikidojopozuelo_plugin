@@ -194,6 +194,8 @@ function my_get_user_datediff($atts)
     
     $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio, TRUE);
     
+    echo $date_diff
+    
     if ($date_diff->years > 1)
         $out .= $date_diff->years . ' años, ';
     elseif ($date_diff->years == 1)
