@@ -189,12 +189,12 @@ function my_get_user_datediff($atts)
     $d_fecha_inicio = adp_user_get_date($fecha_inicio);
     $d_fecha_fin = adp_user_get_date($fecha_fin);
     
-    //echo $d_fecha_inicio->format('d-m-Y');
-    //echo $d_fecha_fin->format('d-m-Y');
+    echo 'inicio: '.$d_fecha_inicio->format('d-m-Y').'<br/>';
+    echo 'fin: '.$d_fecha_fin->format('d-m-Y').'<br/>';
     
     $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio, TRUE);
     
-    echo $date_diff
+    
     
     if ($date_diff->years > 1)
         $out .= $date_diff->years . ' años, ';
