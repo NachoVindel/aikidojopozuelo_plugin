@@ -197,10 +197,10 @@ function my_get_user_datediff($atts)
     if ($date_diff->days > 0)
     {
     
-        if ($date_diff->y > 1 || $date_diff->y == 0)
-            $out .= $date_diff->y . ' años, ';
-        elseif ($date_diff->y == 1)
+        if ($date_diff->y == 1)
             $out .= '1 año, ';
+        else
+            $out .= $date_diff->y . ' años, ';
             
         if ($date_diff->m == 1)
             $out .= '1 mes, ';
