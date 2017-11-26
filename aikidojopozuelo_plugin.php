@@ -171,8 +171,8 @@ function my_get_user_datediff($atts)
     echo $fecha_inicio;
     echo $fecha_fin;
     
-    $d_fecha_inicio = date_create(my_get_user_date('fecha='.$fecha_inicio));
-    $d_fecha_fin = date_create(my_get_user_date('fecha='.$fecha_fin));
+    $d_fecha_inicio = date_create(my_get_user_date('fecha="'.$fecha_inicio.'"'));
+    $d_fecha_fin = date_create(my_get_user_date('fecha="'.$fecha_fin.'"'));
     
     echo $d_fecha_inicio->format('d-m-Y');
     echo $d_fecha_fin->format('d-m-Y');
