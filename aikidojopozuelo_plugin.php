@@ -133,7 +133,7 @@ function adp_format_date ($date)
     $dias = array("Dom","Lun","Mar","Mie","Jue","Vie","Sab");
     $meses = array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
 
-    return '' . $dias[$date->format('w')] . ' ' . $date->format('j') . "-" . $meses[$date->format('n')] . "-" . $date->format('Y') ;
+    return '' . $dias[$date->format('w')] . ' ' . $date->format('j') . "-" . $meses[$date->format('n')-1] . "-" . $date->format('Y') ;
 }
 
 function adp_user_get_date($fecha='')
