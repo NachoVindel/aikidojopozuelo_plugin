@@ -205,10 +205,9 @@ function my_get_user_datediff($atts)
 function adp_lista_usuarios($rol)
 {
     if ($rol == '')
-        $rol = 'Alumno';
-        
-    $out = '';
-    $usuarios = get_users( 'role=alumno&orderby=first_name' );
+        $rol = 'alumno';
+
+    $usuarios = get_users( 'role=' . $rol . '&orderby=first_name' );
     
     if( $usuarios )
     {
@@ -229,13 +228,13 @@ function adp_lista_usuarios($rol)
 add_shortcode('adp_lista_alumnos','adp_lista_alumnos');
 function adp_lista_alumnos()
 {
-    return adp_lista_usuarios ('Alumno');
+    return adp_lista_usuarios ('alumno');
 }
 
 add_shortcode('adp_lista_pendientes_activar','adp_lista_pendientes_activar');
 function adp_lista_pendientes_activar()
 {
-    return adp_lista_usuarios ('Pendiente de Activar');
+    return adp_lista_usuarios ('pendiente_activar');
 }
  
  
