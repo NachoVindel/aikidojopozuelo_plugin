@@ -62,7 +62,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-aikidojopozuelo_plugin.php
 
  
  
- add_shortcode('user_kyus_dates','my_get_users_kyus_dates');
+/*add_shortcode('user_kyus_dates','my_get_users_kyus_dates');
 function my_get_users_kyus_dates($atts = null)
 {
 	$out = '';
@@ -94,9 +94,9 @@ function my_get_users_kyus_dates($atts = null)
 	
 	return $out;
 
-}
+}*/
 
-add_shortcode('user_dans_dates','my_get_users_dans_dates');
+/*add_shortcode('user_dans_dates','my_get_users_dans_dates');
 function my_get_users_dans_dates($atts = null)
 {
 	$out = '';
@@ -124,8 +124,7 @@ function my_get_users_dans_dates($atts = null)
 	
 	return $out;
 
-}
-
+}*/
 
 
 function adp_format_date ($date)
@@ -159,15 +158,9 @@ function my_get_user_date($atts)
         'fecha' => ''
     ), $atts ) );
     
-    /*
-    if ($fecha != '')
-    {
-        $d_fecha = date_create( get_user_meta( $user->id, $fecha, true ) );
-    */    
-        $d_fecha = adp_user_get_date($fecha);
-        if ($d_fecha->format('Ymd') != date('Ymd'))
-            $out = adp_format_date($d_fecha);
-    //}
+    $d_fecha = adp_user_get_date($fecha);
+    if ($d_fecha->format('Ymd') != date('Ymd'))
+        $out = adp_format_date($d_fecha);
     
 	return $out;
 
@@ -183,15 +176,8 @@ function my_get_user_datediff($atts)
         'fecha_fin' => ''
     ), $atts ) );
     
-    //echo $fecha_inicio;
-    //echo $fecha_fin;
-    
     $d_fecha_inicio = adp_user_get_date($fecha_inicio);
     $d_fecha_fin = adp_user_get_date($fecha_fin);
-    
-    //echo 'inicio: '.$d_fecha_inicio->format('d-m-Y').'<br/>';
-    //echo 'fin: '.$d_fecha_fin->format('d-m-Y').'<br/>';
-    
     $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio);
     
     if ($date_diff->days > 0)
@@ -216,6 +202,35 @@ function my_get_user_datediff($atts)
     return $out;
 }
 
+function adp_lista_usuarios($rol)
+{
+    if ($rol == '')
+        $rol = 'Alumno';
+        
+    $out = '<ul>';
+    $array_usuarios = new WP_User_Query( array( 'role' => $rol ) );
+    
+    foreach ($array_usuarios as $usuario)
+    {
+        $out.= '<li><a href="/admin-dojo/ficha-alumno/?id=' . $usuario->id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) . '</a>';
+    }
+    
+    return $out . '</ul>';
+}
+
+
+
+add_shortcode('adp_lista_alumnos','adp_lista_alumnos');
+function adp_lista_alumnos()
+{
+    return adp_lista_usuarios ('Alumno');
+}
+
+add_shortcode('adp_lista_pendientes_activar','adp_lista_pendientes_activar');
+function adp_lista_pendientes_activar()
+{
+    return adp_lista_usuarios ('Pendiente de Activar');
+}
  
  
 /**
