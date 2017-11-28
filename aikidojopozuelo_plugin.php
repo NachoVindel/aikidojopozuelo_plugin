@@ -209,7 +209,7 @@ function adp_lista_usuarios($rol)
         
     $out = '';
     global $wpdb;
-    $usuarios = $wpdb->get_results( "SELECT user_id, first_name, last_name FROM $wpdb->usermeta WHERE meta_key = 'role' AND meta_value = 'Alumno'" );
+    $usuarios = $wpdb->get_results( "SELECT user_id, first_name, last_name FROM $wpdb->usermeta WHERE meta_key = 'first_name' AND meta_value = 'Nacho'" );
     
     if( $usuarios )
     {
