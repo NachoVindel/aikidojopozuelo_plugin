@@ -207,15 +207,22 @@ function adp_lista_usuarios($rol)
     if ($rol == '')
         $rol = 'Alumno';
         
-    $out = '<ul>';
-    $array_usuarios = new WP_User_Query( array( 'role' => 'Administrator' ) );
+    $out = '';
+    global $wpdb;
+    $usuarios = $wpdb->get_results( "SELECT user_id, first_name, last_name FROM $wpdb->usermeta WHERE meta_key = 'role' AND meta_value = 'Alumno'" );
     
-    foreach ($array_usuarios as $usuario)
+    if( $usuarios )
     {
-        $out.= '<li><a href="/admin-dojo/ficha-alumno/?id=' . $usuario->id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) . '</a>';
-    }
+        $out.='<ul>';
+    	foreach ( $usuarios as $usuario ) 
+    		$out.= '<li><a href="/admin-dojo/ficha-alumno/?id=' . $usuario->user_id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) . '</a>';
+    	
+    	$out.='</ul>';
+    } 
+    else
+    	$out.= 'No hay usuarios con el rol de "' . $rol . '"';
     
-    return $out . '</ul>';
+    return $out;
 }
 
 
