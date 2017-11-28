@@ -208,14 +208,13 @@ function adp_lista_usuarios($rol)
         $rol = 'Alumno';
         
     $out = '';
-    global $wpdb;
-    $usuarios = $wpdb->get_results( "SELECT user_id, first_name, last_name FROM $wpdb->usermeta WHERE meta_key = 'first_name' AND meta_value = 'Nacho'" );
+    $usuarios = get_users( 'role=alumno&orderby=first_name' );
     
     if( $usuarios )
     {
         $out.='<ul>';
     	foreach ( $usuarios as $usuario ) 
-    		$out.= '<li><a href="/admin-dojo/ficha-alumno/?id=' . $usuario->user_id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) . '</a>';
+    		$out.= '<li><a href="/admin-dojo/ficha-alumno/?id=' . $usuario->id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) . '</a>';
     	
     	$out.='</ul>';
     } 
