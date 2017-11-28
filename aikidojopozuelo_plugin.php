@@ -208,7 +208,7 @@ function adp_lista_usuarios($rol)
         $rol = 'Alumno';
         
     $out = '<ul>';
-    $array_usuarios = new WP_User_Query( array( 'role' => $rol ) );
+    $array_usuarios = new WP_User_Query( array( 'role' => 'Administrator' ) );
     
     foreach ($array_usuarios as $usuario)
     {
