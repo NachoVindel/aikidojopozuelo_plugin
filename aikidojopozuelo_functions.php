@@ -204,17 +204,7 @@ function adp_lista_usuarios($rol)
     return $out;
 }
 
-function adp_activar_alumno ($id_alumno)
-{   
-    $user = new \WP_User( $id_alumno );
-	$user->set_role( 'alumno' );
-}
 
-function adp_desactivar_alumno ($id_alumno)
-{   
-    $user = new \WP_User( $id_alumno );
-	$user->set_role( 'pendiente_activar' );
-}
 
 add_shortcode('adp_lista_alumnos','adp_lista_alumnos');
 function adp_lista_alumnos()
@@ -228,7 +218,20 @@ function adp_lista_pendientes_activar()
     return adp_lista_usuarios ('pendiente_activar');
 }
 
-/*add_shortcode('adp_acciones_admin','adp_acciones_admin');
+/*
+function adp_activar_alumno ($id_alumno)
+{   
+    $user = new \WP_User( $id_alumno );
+	$user->set_role( 'alumno' );
+}
+
+function adp_desactivar_alumno ($id_alumno)
+{   
+    $user = new \WP_User( $id_alumno );
+	$user->set_role( 'pendiente_activar' );
+}
+
+add_shortcode('adp_acciones_admin','adp_acciones_admin');
 function adp_acciones_admin()
 {
     if (isset($_GET['accion'])) {
