@@ -296,7 +296,7 @@ function adp_lista_pendientes_activar()
     return adp_lista_usuarios ('pendiente_activar');
 }
 
-/*
+
 function adp_activar_alumno ($id_alumno)
 {   
     $user = new \WP_User( $id_alumno );
@@ -339,7 +339,7 @@ function adp_acciones_admin()
     
     return '';
     
-}*/
+}
 // ---------------------
 
 
