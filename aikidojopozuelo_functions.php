@@ -256,6 +256,6 @@ function adp_acciones_admin()
       }
     }
     
-    return null;
+    return '';
     
 }
