@@ -273,7 +273,7 @@ function adp_lista_usuarios($rol)
     	foreach ( $usuarios as $usuario ) 
     		$out.= '<li><a href="/admin-dojo/ficha-alumno/?id=' . $usuario->id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) 
     		. '</a> (<a href="/admin-dojo/?accion=activar_alumno&id_alumno=' . $usuario->id . '">Activar</a>' 
-    		. '- <a href="/admin-dojo/?accion=desactivar_alumno&id_alumno=' . $usuario->id . '">Desactivar</a>)'
+    		. '- <a href="/admin-dojo/?accion=desactivar_alumno&id_alumno=' . $usuario->id . '">Desactivar</a>'
     		. '- <a href="/wp-admin/user-edit.php?user_id=' . $usuario->id . '&wp_http_referer=%2Fadmin%2">Editar</a>)';
     	
     	$out.='</ul>';
