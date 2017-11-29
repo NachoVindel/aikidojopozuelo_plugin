@@ -77,7 +77,6 @@ function run_aikidojopozuelo_plugin() {
 
 
 // ----------------------------
-<?php
 
 /*add_shortcode('user_kyus_dates','my_get_users_kyus_dates');
 function my_get_users_kyus_dates($atts = null)
