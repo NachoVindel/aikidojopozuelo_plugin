@@ -228,7 +228,7 @@ function adp_lista_pendientes_activar()
     return adp_lista_usuarios ('pendiente_activar');
 }
 
-add_shortcode('adp_acciones_admin','adp_acciones_admin');
+/*add_shortcode('adp_acciones_admin','adp_acciones_admin');
 function adp_acciones_admin()
 {
     if (isset($_GET['accion'])) {
@@ -258,4 +258,4 @@ function adp_acciones_admin()
     
     return '';
     
-}
+}*/
