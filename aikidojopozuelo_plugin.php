@@ -172,7 +172,7 @@ $(\'h2:contains("About Yourself"), h2:contains("About the user")\').remove(); //
 
 $(\'h2:contains("wordpress-seo")\').remove(); // remove the "wordpress-seo" 
 
-$(\'table.form-table tr.wpseo_author_title\').remove();// remove the "wpseo_author_title" field in the "Contact Info" section
+$(\'form#your-profile tr.wpseo_author_title\').remove();// remove the "wpseo_author_title" field in the "Contact Info" section
 
   
 $(\'form#your-profile tr.user-description-wrap\').remove(); // remove the "Biographical Info" field
