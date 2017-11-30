@@ -170,11 +170,11 @@ $(\'table.form-table tr.user-url-wrap\').remove();// remove the "Website" field 
   
 $(\'h2:contains("About Yourself"), h2:contains("About the user")\').remove(); // remove the "About Yourself" and "About the user" titles
 
-$(\'h2:contains("wordpress-seo")\').remove(); // remove the "wordpress-seo" 
-
 $(\'form#your-profile tr.user-description-wrap\').remove(); // remove the "Biographical Info" field
   
 $(\'form#your-profile tr.user-profile-picture\').remove(); // remove the "Profile Picture" field
+
+$(\'form#your-profile tr.user-googleplus-wrap\').remove(); // ***
   
 $(\'table.form-table tr.user-aim-wrap\').remove();// remove the "AIM" field in the "Contact Info" section
  
