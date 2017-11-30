@@ -178,6 +178,10 @@ $(\'form#your-profile tr.user-googleplus-wrap\').remove(); // ***
 $(\'form#your-profile tr.user-twitter-wrap\').remove(); // ***
 $(\'form#your-profile tr.user-facebook-wrap\').remove(); // ***
 
+$(\'h3:contains("Capacidades adicionales")\').remove(); // ***
+$(\'table.form-table tr.user-display-name-wrap\').remove(); // ***
+
+
   
 $(\'table.form-table tr.user-aim-wrap\').remove();// remove the "AIM" field in the "Contact Info" section
  
