@@ -170,7 +170,7 @@ $(\'table.form-table tr.user-url-wrap\').remove();// remove the "Website" field 
   
 $(\'h2:contains("About Yourself"), h2:contains("About the user")\').remove(); // remove the "About Yourself" and "About the user" titles
 
-$(\'h2:contains("Ajustes Yoast SEO")\').remove(); // remove the "Ajustes Yoast SEO" and "Ajustes Yoast SEO" titles
+$(\'h2:contains("wordpress-seo")\').remove(); // remove the "wordpress-seo" 
   
 $(\'form#your-profile tr.user-description-wrap\').remove(); // remove the "Biographical Info" field
   
