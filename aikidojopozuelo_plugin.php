@@ -175,6 +175,9 @@ $(\'form#your-profile tr.user-description-wrap\').remove(); // remove the "Biogr
 $(\'form#your-profile tr.user-profile-picture\').remove(); // remove the "Profile Picture" field
 
 $(\'form#your-profile tr.user-googleplus-wrap\').remove(); // ***
+$(\'form#your-profile tr.user-twitter-wrap\').remove(); // ***
+$(\'form#your-profile tr.user-facebook-wrap\').remove(); // ***
+
   
 $(\'table.form-table tr.user-aim-wrap\').remove();// remove the "AIM" field in the "Contact Info" section
  
