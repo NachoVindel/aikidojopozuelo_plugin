@@ -178,6 +178,7 @@ $(\'form#your-profile tr.user-googleplus-wrap\').remove(); // ***
 $(\'form#your-profile tr.user-twitter-wrap\').remove(); // ***
 $(\'form#your-profile tr.user-facebook-wrap\').remove(); // ***
 
+$(\'h2:contains("Acerca del Usuario")\').remove(); // ***
 $(\'h3:contains("Capacidades adicionales")\').remove(); // ***
 $(\'table.form-table tr.user-display-name-wrap\').remove(); // ***
 
