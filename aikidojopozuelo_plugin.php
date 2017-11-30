@@ -169,6 +169,8 @@ $(\'table.form-table tr.user-display-name-wrap\').remove(); // remove the “Dis
 $(\'table.form-table tr.user-url-wrap\').remove();// remove the "Website" field in the "Contact Info" section
   
 $(\'h2:contains("About Yourself"), h2:contains("About the user")\').remove(); // remove the "About Yourself" and "About the user" titles
+
+$(\'h2:contains("Ajustes Yoast SEO")\').remove(); // remove the "Ajustes Yoast SEO" and "Ajustes Yoast SEO" titles
   
 $(\'form#your-profile tr.user-description-wrap\').remove(); // remove the "Biographical Info" field
   
