@@ -171,6 +171,9 @@ $(\'table.form-table tr.user-url-wrap\').remove();// remove the "Website" field 
 $(\'h2:contains("About Yourself"), h2:contains("About the user")\').remove(); // remove the "About Yourself" and "About the user" titles
 
 $(\'h2:contains("wordpress-seo")\').remove(); // remove the "wordpress-seo" 
+
+$(\'table.form-table tr.wpseo_author_title\').remove();// remove the "wpseo_author_title" field in the "Contact Info" section
+
   
 $(\'form#your-profile tr.user-description-wrap\').remove(); // remove the "Biographical Info" field
   
