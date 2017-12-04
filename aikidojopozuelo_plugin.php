@@ -332,7 +332,7 @@ function adp_ficha_alumno($id_alumno)
      	<li><strong>Dirección</strong>: ' . get_user_meta( $id_alumno->id, 'addr1', true ) . ', ' . get_user_meta( $id_alumno->id, 'zip', true ) . ' - ' . get_user_meta( $id_alumno->id, 'city', true ) . ' (' . get_user_meta( $id_alumno->id, 'thestate', true ) . ')</li>
      	<li><strong>Teléfono</strong>: ' . get_user_meta( $id_alumno->id, 'phone1', true ) . '</li>
      	<li><strong>Email</strong>: ' . get_user_meta( $id_alumno->id, 'user_email', true ) . '</li>
-     	<li><strong>Fecha de Nacimiento</strong>: ' . get_user_meta( $id_alumno->id, 'bithdate', true ) . '</li>
+     	<li><strong>Fecha de Nacimiento</strong>: ' . get_user_meta( $id_alumno->id, 'birthdate', true ) . '</li>
     </ul>
     <strong><em><a href="/area-alumnos/editar-alumno">Editar</a></em></strong>
     <h5>Licencia</h5>
@@ -416,6 +416,7 @@ function adp_acciones_admin()
     }
     
     return $out;
+    
     
 }
 
