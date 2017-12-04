@@ -375,9 +375,9 @@ function adp_acciones_admin()
         
     if (isset($_GET['id_alumno']))
         $id_alumno = $_GET['id_alumno'];
-    else {
+    else 
         $id_alumno = '';
-    }
+    
     switch($accion)
     {
         case '':
@@ -402,9 +402,12 @@ function adp_acciones_admin()
             break;
             
         case 'ficha_alumno':
+            echo 'ficha_alumno';
             if ($id_alumno != '')
             {
+                echo ' ' . $id_alumno;
                 $out = adp_ficha_alumno ($id_alumno);
+                
             }
             break;
             
