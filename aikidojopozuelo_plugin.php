@@ -359,7 +359,7 @@ function adp_ficha_alumno($id_alumno)
      	<li><span style="color: #333333;"><strong>Yondan</strong></span>: ' . my_get_user_date(array('fecha' => 'fecha_shodan')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_yondan', 'fecha_fin' => '')) . '</li>
     </ul>';
     
-    return $sout;
+    return $out;
 }
 
 add_shortcode('adp_acciones_admin','adp_acciones_admin');
@@ -402,10 +402,10 @@ function adp_acciones_admin()
             break;
             
         case 'ficha_alumno':
-            echo 'ficha_alumno';
+            //echo 'ficha_alumno';
             if ($id_alumno != '')
             {
-                echo ' ' . $id_alumno;
+                //echo ' ' . $id_alumno;
                 $out = adp_ficha_alumno ($id_alumno);
                 
             }
