@@ -2,7 +2,7 @@
 
 if (( $# < 1 )); then
     git add -A 
-    git commit -m "nuevo commit"
+    git commit -m $(date +%s)
     git push origin master
 else
 
