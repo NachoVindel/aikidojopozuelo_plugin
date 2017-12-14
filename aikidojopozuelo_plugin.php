@@ -32,8 +32,8 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 
-include_once('/includes/adp_funciones.php');
-include_once('/includes/adp_class-alumno.php');
+include_once('/includes/adp/adp_funciones.php');
+include_once('/includes/adp/adp_class-alumno.php');
 
 /**
  * The code that runs during plugin activation.
