@@ -66,7 +66,9 @@ function my_get_users_dans_dates($atts = null)
 
 }*/
 
-add_action('admin_head','remove_personal_options');
+include_once('/includes/adp/adp_class-alumno.php');
+
+
 function remove_personal_options(){
     echo '<script type="text/javascript">jQuery(document).ready(function($) {
   
@@ -140,7 +142,7 @@ function adp_user_get_date($fecha='')
 	return $d_fecha;
 }
 
-add_shortcode('user_date','my_get_user_date');
+
 function my_get_user_date($atts)
 {
 	$out = '';
@@ -158,7 +160,6 @@ function my_get_user_date($atts)
 
 }
 
-add_shortcode('user_datediff','my_get_user_datediff');
 function my_get_user_datediff($atts)
 {
     $out = '';
@@ -286,7 +287,7 @@ function adp_ficha_alumno($id_alumno)
     return $out;
 }
 
-add_shortcode('adp_acciones_admin','adp_acciones_admin');
+
 function adp_acciones_admin()
 {
     $out = '';

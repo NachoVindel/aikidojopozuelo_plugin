@@ -32,9 +32,6 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 
-include_once('/includes/adp/adp_funciones.php');
-include_once('/includes/adp/adp_class-alumno.php');
-
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-aikidojopozuelo_plugin-activator.php
@@ -77,5 +74,11 @@ function run_aikidojopozuelo_plugin() {
 	$plugin->run();
 
 }
+
+include_once('/includes/adp/adp_funciones.php');
+add_action('admin_head','remove_personal_options');
+add_shortcode('user_date','my_get_user_date');
+add_shortcode('user_datediff','my_get_user_datediff');
+add_shortcode('adp_acciones_admin','adp_acciones_admin');
 
 run_aikidojopozuelo_plugin();
