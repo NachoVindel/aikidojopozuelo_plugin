@@ -75,7 +75,7 @@ function run_aikidojopozuelo_plugin() {
 
 }
 
-include ('/includes/adp/adp_funciones.php');
+include_once( plugin_dir_path( __FILE__ ) . 'includes/adp/adp_funciones.php' );
 add_action('admin_head','remove_personal_options');
 add_shortcode('user_date','my_get_user_date');
 add_shortcode('user_datediff','my_get_user_datediff');
