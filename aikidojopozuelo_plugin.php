@@ -32,6 +32,9 @@ if ( ! defined( 'WPINC' ) ) {
 
 define( 'PLUGIN_NAME_VERSION', '1.0.0' );
 
+include_once('/aikidojopozuelo_functions.php');
+include_once('/aikidojopozuelo_functions');
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-aikidojopozuelo_plugin-activator.php
