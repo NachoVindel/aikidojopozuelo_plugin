@@ -237,11 +237,11 @@ function code_adp_acciones_admin()
     switch($accion)
     {
         case '':
-            
-            echo 'code_adp_acciones_admin';
-            
+            echo 'antes';
+            $alumnos = adp_Alumno::ListaAlumnos();
+            echo 'despues';
             $out = 'Lista de Alumnos<br/>'
-                . adp_lista_usuarios (adp_Alumno::ListaAlumnos()) . '<br/>'
+                . adp_lista_usuarios ($alumnos) . '<br/>'
                 . 'Pendiente de Activar</br>'
                 . adp_lista_usuarios (adp_Alumno::ListaPendientesActivar());
             break;
