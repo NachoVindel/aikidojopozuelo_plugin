@@ -229,8 +229,6 @@ function code_adp_acciones_admin()
     else
         $accion = '';
         
-    echo 'out';
-        
     if (isset($_GET['id_alumno']))
         $id_alumno = $_GET['id_alumno'];
     else 
