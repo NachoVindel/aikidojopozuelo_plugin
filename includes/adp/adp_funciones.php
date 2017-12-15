@@ -237,6 +237,9 @@ function code_adp_acciones_admin()
     switch($accion)
     {
         case '':
+            
+            echo 'code_adp_acciones_admin';
+            
             $out = 'Lista de Alumnos<br/>'
                 . adp_lista_usuarios (adp_Alumno::ListaAlumnos()) . '<br/>'
                 . 'Pendiente de Activar</br>'
