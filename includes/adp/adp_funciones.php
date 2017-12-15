@@ -238,9 +238,9 @@ function code_adp_acciones_admin()
     {
         case '':
             $out = 'Lista de Alumnos<br/>'
-                . adp_lista_usuarios (adp_Alumno::ListaAlumnos()) . '<br/>'
+                . adp_lista (adp_Alumno::ListaAlumnos()) . '<br/>'
                 . 'Pendiente de Activar</br>'
-                . adp_lista_usuarios (adp_Alumno::ListaPendientesActivar());
+                . adp_lista (adp_Alumno::ListaPendientesActivar());
             break;
             
         case 'desactivar_alumno':
