@@ -102,6 +102,7 @@ function adp_user_get_date($fecha='')
 
 function adp_lista($usuarios)
 {
+    echo 'in';
     if( $usuarios )
     {
         $out.='<ul>';
