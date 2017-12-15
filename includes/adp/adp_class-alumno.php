@@ -123,7 +123,7 @@ class adp_Alumno
 	    $user->set_role( 'alumno' );
     }
     
-    public static function ListaAlumnos()
+    static public function ListaAlumnos()
     {
         echo 'ListaAlumnos';
         //return get_users( 'role=alumno&orderby=first_name' );
