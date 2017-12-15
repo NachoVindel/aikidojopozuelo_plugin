@@ -125,6 +125,7 @@ class adp_Alumno
     
     public static function ListaAlumnos()
     {
+        echo 'ListaAlumnos';
         return get_users( 'role=alumno&orderby=first_name' );
     }
     
