@@ -1,6 +1,6 @@
 <?php
 
-include_once( plugin_dir_path( __FILE__ ) . 'includes/adp/adp_class-alumno.php' );
+
 
 function adp_FormatDate($date)
 {
