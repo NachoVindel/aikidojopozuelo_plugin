@@ -1,5 +1,22 @@
 <?php
 
+include_once( plugin_dir_path( __FILE__ ) . 'includes/adp/adp_class-alumno.php' );
+
+function adp_FormatDate($date)
+{
+    $out = '';
+    if ($date->format('Ymd') != date('Ymd'))
+    {
+        $dias = array("Dom","Lun","Mar","Mie","Jue","Vie","Sab");
+        $meses = array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
+
+        $out = $dias[$date->format('w')] . ' ' . $date->format('j') . "-" . $meses[$date->format('n')-1] . "-" . $date->format('Y') ;
+    }
+    return $out;
+}
+
+
+
 // ----------------------------
 
 /*add_shortcode('user_kyus_dates','my_get_users_kyus_dates');
@@ -66,10 +83,248 @@ function my_get_users_dans_dates($atts = null)
 
 }*/
 
-include_once('/includes/adp/adp_class-alumno.php');
+/*
+function adp_user_get_date($fecha='')
+{
+    if ($fecha != '')
+    {
+        $user = wp_get_current_user();
+        $d_fecha = date_create( get_user_meta( $user->id, $fecha, true ) );
+    }
+    else
+        $d_fecha = date_create();
+    
+	return $d_fecha;
+}
+*/
 
 
-function remove_personal_options(){
+
+function adp_lista($usuarios)
+{
+    if( $usuarios )
+    {
+        $out.='<ul>';
+    	foreach ( $usuarios as $usuario ) 
+    		$out.= '<li><a href="/admin-dojo/?accion=ficha_alumno&id_alumno=' . $usuario->id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) 
+    		. '</a> (<a href="/admin-dojo/?accion=activar_alumno&id_alumno=' . $usuario->id . '">Activar</a> ' 
+    		. '- <a href="/admin-dojo/?accion=desactivar_alumno&id_alumno=' . $usuario->id . '">Desactivar</a> '
+    		. '- <a href="/wp-admin/user-edit.php?user_id=' . $usuario->id . '&wp_http_referer=%2Fadmin%2">Editar</a>)';
+    	
+    	$out.='</ul>';
+    } 
+    else
+    	$out.= 'No hay usuarios con el rol de "' . $rol . '"';
+    
+    return $out;
+}
+
+
+
+/*
+function adp_ficha_alumno($id_alumno)
+{
+    $out = 
+    '[wpmem_avatar]
+    <h5></h5>
+    <h5>Datos Personales</h5>
+    <ul>
+     	<li><strong>Nombre</strong>: ' . get_user_meta( $id_alumno->id, 'first_name', true ) . ' ' .get_user_meta( $id_alumno->id, 'last_name', true ) . '</li>
+     	<li><strong>Dirección</strong>: ' . get_user_meta( $id_alumno->id, 'addr1', true ) . ', ' . get_user_meta( $id_alumno->id, 'zip', true ) . ' - ' . get_user_meta( $id_alumno->id, 'city', true ) . ' (' . get_user_meta( $id_alumno->id, 'thestate', true ) . ')</li>
+     	<li><strong>Teléfono</strong>: ' . get_user_meta( $id_alumno->id, 'phone1', true ) . '</li>
+     	<li><strong>Email</strong>: ' . get_user_meta( $id_alumno->id, 'user_email', true ) . '</li>
+     	<li><strong>Fecha de Nacimiento</strong>: ' . get_user_meta( $id_alumno->id, 'birthdate', true ) . '</li>
+    </ul>
+    <strong><em><a href="/area-alumnos/editar-alumno">Editar</a></em></strong>
+    <h5>Licencia</h5>
+    <ul>
+     	<li>' . get_user_meta( $id_alumno->id, 'licencia_aikikan', true ) . '</li>
+    </ul>
+    <h5>Práctica</h5>
+    <ul>
+     	<li><strong>Inicio</strong>: ' . my_get_user_date(array('fecha' => 'fecha_ingreso_dojo')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_ingreso_dojo', 'fecha_fin' => '')) . '</li>
+    </ul>
+    <h5>Grados Kyu</h5>
+    <ul>
+     	<li><strong><span style="color: #ffcc00;">5º Kyu</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_5kyu')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_5kyu', 'fecha_fin' => 'fecha_4kyu')) . '</li>
+     	<li><strong><span style="color: #ff6600;">4º Kyu</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_4kyu')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_4kyu', 'fecha_fin' => 'fecha_3kyu')) . '</li>
+     	<li><strong><span style="color: #008000;">3º Kyu</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_3kyu')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_3kyu', 'fecha_fin' => 'fecha_2kyu')) . '</li>
+     	<li><strong><span style="color: #0000ff;">2º Kyu</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_2kyu')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_2kyu', 'fecha_fin' => 'fecha_1kyu')) . '</li>
+     	<li><strong><span style="color: #800000;">1º Kyu</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_1kyu')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_1kyu', 'fecha_fin' => 'fecha_shodan')) . '</li>
+    </ul>
+    <h5>Grados DAN</h5>
+    <ul>
+     	<li><strong><span style="color: #333333;">Shodan</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_shodan')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_shodan', 'fecha_fin' => 'fecha_nidan')) . '</li>
+     	<li><strong><span style="color: #333333;">Nidan</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_shodan')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_nidan', 'fecha_fin' => 'fecha_sandan')) . '</li>
+     	<li><span style="color: #333333;"><strong>Sandan</strong></span>: ' . my_get_user_date(array('fecha' => 'fecha_shodan')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_sandan', 'fecha_fin' => 'fecha_yondan')) . '</li>
+     	<li><span style="color: #333333;"><strong>Yondan</strong></span>: ' . my_get_user_date(array('fecha' => 'fecha_shodan')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_yondan', 'fecha_fin' => '')) . '</li>
+    </ul>';
+    
+    return $out;
+}
+*/
+
+/***************************************************
+ * SHORTCODES
+ * *************************************************/
+/*
+function code_user_date($atts)
+{
+	$out = '';
+	//$user = wp_get_current_user();
+	
+	extract( shortcode_atts( array(
+        'fecha' => ''
+    ), $atts ) );
+    
+    $d_fecha = adp_user_get_date($fecha);
+    if ($d_fecha->format('Ymd') != date('Ymd'))
+        $out = adp_format_date($d_fecha);
+    
+	return $out;
+}
+
+function code_user_datediff($atts)
+{
+    $out = '';
+    
+	extract( shortcode_atts( array(
+        'fecha_inicio' => '',
+        'fecha_fin' => ''
+    ), $atts ) );
+    
+    $d_fecha_inicio = adp_user_get_date($fecha_inicio);
+    $d_fecha_fin = adp_user_get_date($fecha_fin);
+    $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio);
+    
+    if ($date_diff->days > 0)
+    {
+    
+        if ($date_diff->y == 1)
+            $out .= '1 año, ';
+        else
+            $out .= $date_diff->y . ' años, ';
+            
+        if ($date_diff->m == 1)
+            $out .= '1 mes, ';
+        else
+            $out .= $date_diff->m . ' meses, ';
+            
+        if ($date_diff->d == 1)
+            $out .= '1 día';
+        else
+            $out .= $date_diff->d . ' días';
+    }
+    
+    return $out;
+}
+*/
+
+function code_adp_acciones_admin()
+{
+    $out = '';
+    
+    if (isset($_GET['accion']))
+        $accion = $_GET['accion'];
+    else
+        $accion = '';
+        
+        
+    if (isset($_GET['id_alumno']))
+        $id_alumno = $_GET['id_alumno'];
+    else 
+        $id_alumno = '';
+    
+    switch($accion)
+    {
+        case '':
+            $out = 'Lista de Alumnos<br/>'
+                . adp_lista_usuarios (adp_Alumno::ListaAlumnos()) . '<br/>'
+                . 'Pendiente de Activar</br>'
+                . adp_lista_usuarios (adp_Alumno::ListaPendientesActivar());
+            break;
+            
+        case 'desactivar_alumno':
+            if ($id_alumno != '')
+            {   
+                adp_Alumno::Desactivar($id_alumno);
+            }
+            break;
+            
+        case 'activar_alumno':
+            if ($id_alumno != '')
+            {
+                adp_Alumno::Activar($id_alumno);
+            }
+            break;
+            
+        case 'ficha_alumno':
+            //echo 'ficha_alumno';
+            if ($id_alumno != '')
+            {
+                //echo ' ' . $id_alumno;
+                $out = code_adp_ficha_alumno($id_alumno);
+                
+            }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return $out;
+}
+
+function code_adp_ficha_alumno($idAlumno)
+{
+    if ($idAlumno = "")
+        $idAlumno = null;
+        
+    $alumno = new adp_Alumno($idAlumno);
+    
+    $out = '
+    <h5></h5>
+    <h5>Datos Personales</h5>
+    <ul>
+     	<li><strong>Nombre</strong>:'.$alumno->NombreCompleto.'</li>
+     	<li><strong>Dirección</strong>: '.$alumno->Direccion.' ,'.$alumno->CP.' - '.$alumno->Ciudad.' ('.$alumno->Comunidad.')</li>
+     	<li><strong>Teléfono</strong>: '.$alumno->Movil.'</li>
+     	<li><strong>Email</strong>: '.$alumno->Email.'</li>
+     	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).'</li>
+    </ul>
+    <strong><em><a href="/area-alumnos/editar-alumno">Editar</a></em></strong>
+    <h5>Licencia</h5>
+    <ul>
+     	<li>'.$alumno->LicenciaAikikan.'</li>
+    </ul>
+    <h5>Práctica</h5>
+    <ul>
+     	<li><strong>Inicio</strong>: '.adp_FormatDate($alumno->FechaIngresoDojo).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaIngresoDojo, null).'</li>
+    </ul>
+    <h5>Grados Kyu</h5>
+    <ul>
+     	<li><strong><span style="color: #ffcc00;">5º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha5Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha5Kyu, $alumno->Fecha4Kyu).'</li>
+     	<li><strong><span style="color: #ff6600;">4º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha4Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha4Kyu, $alumno->Fecha3Kyu).'</li>
+     	<li><strong><span style="color: #008000;">3º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha3Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha3Kyu, $alumno->Fecha2Kyu).'</li>
+     	<li><strong><span style="color: #0000ff;">2º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha2Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha2Kyu, $alumno->Fecha1Kyu).'</li>
+     	<li><strong><span style="color: #800000;">1º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha1Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha1Kyu, $alumno->FechaShodan).'</li>
+    </ul>
+    <h5>Grados DAN</h5>
+    <ul>
+     	<li><strong><span style="color: #333333;">Shodan</span></strong>: '.adp_FormatDate($alumno->FechaShodan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaShodan, $alumno->FechaNidan).'</li>
+     	<li><strong><span style="color: #333333;">Nidan</span></strong>: '.adp_FormatDate($alumno->FechaNidan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaNidan, $alumno->FechaSandan).'</li>
+     	<li><span style="color: #333333;"><strong>Sandan</strong></span>: '.adp_FormatDate($alumno->FechaSandan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaSandan, $alumno->FechaYondan).'</li>
+     	<li><span style="color: #333333;"><strong>Yondan</strong></span>: '.adp_FormatDate($alumno->FechaYondan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaYondan, null).'</li>
+    </ul>
+    ';
+    return $out;
+}
+
+
+/***************************************************
+ * ACTIONS
+ * *************************************************/
+function action_remove_personal_options(){
     echo '<script type="text/javascript">jQuery(document).ready(function($) {
   
 $(\'form#your-profile > h2:first\').remove(); // remove the "Personal Options" title
@@ -119,230 +374,3 @@ $(\'table.form-table tr.user-jabber-wrap\').remove();// remove the "Jabber / Goo
 });</script>';
   
 }
-
-
-function adp_format_date ($date)
-{
-    $dias = array("Dom","Lun","Mar","Mie","Jue","Vie","Sab");
-    $meses = array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
-
-    return '' . $dias[$date->format('w')] . ' ' . $date->format('j') . "-" . $meses[$date->format('n')-1] . "-" . $date->format('Y') ;
-}
-
-function adp_user_get_date($fecha='')
-{
-    if ($fecha != '')
-    {
-        $user = wp_get_current_user();
-        $d_fecha = date_create( get_user_meta( $user->id, $fecha, true ) );
-    }
-    else
-        $d_fecha = date_create();
-    
-	return $d_fecha;
-}
-
-
-function my_get_user_date($atts)
-{
-	$out = '';
-	//$user = wp_get_current_user();
-	
-	extract( shortcode_atts( array(
-        'fecha' => ''
-    ), $atts ) );
-    
-    $d_fecha = adp_user_get_date($fecha);
-    if ($d_fecha->format('Ymd') != date('Ymd'))
-        $out = adp_format_date($d_fecha);
-    
-	return $out;
-
-}
-
-function my_get_user_datediff($atts)
-{
-    $out = '';
-    
-	extract( shortcode_atts( array(
-        'fecha_inicio' => '',
-        'fecha_fin' => ''
-    ), $atts ) );
-    
-    $d_fecha_inicio = adp_user_get_date($fecha_inicio);
-    $d_fecha_fin = adp_user_get_date($fecha_fin);
-    $date_diff = date_diff($d_fecha_fin, $d_fecha_inicio);
-    
-    if ($date_diff->days > 0)
-    {
-    
-        if ($date_diff->y == 1)
-            $out .= '1 año, ';
-        else
-            $out .= $date_diff->y . ' años, ';
-            
-        if ($date_diff->m == 1)
-            $out .= '1 mes, ';
-        else
-            $out .= $date_diff->m . ' meses, ';
-            
-        if ($date_diff->d == 1)
-            $out .= '1 día';
-        else
-            $out .= $date_diff->d . ' días';
-    }
-    
-    return $out;
-}
-
-function adp_lista_usuarios($rol)
-{
-    if ($rol == '')
-        $rol = 'alumno';
-
-    $usuarios = get_users( 'role=' . $rol . '&orderby=first_name' );
-    
-    if( $usuarios )
-    {
-        $out.='<ul>';
-    	foreach ( $usuarios as $usuario ) 
-    		$out.= '<li><a href="/admin-dojo/?accion=ficha_alumno&id_alumno=' . $usuario->id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) 
-    		. '</a> (<a href="/admin-dojo/?accion=activar_alumno&id_alumno=' . $usuario->id . '">Activar</a> ' 
-    		. '- <a href="/admin-dojo/?accion=desactivar_alumno&id_alumno=' . $usuario->id . '">Desactivar</a> '
-    		. '- <a href="/wp-admin/user-edit.php?user_id=' . $usuario->id . '&wp_http_referer=%2Fadmin%2">Editar</a>)';
-    	
-    	$out.='</ul>';
-    } 
-    else
-    	$out.= 'No hay usuarios con el rol de "' . $rol . '"';
-    
-    return $out;
-}
-
-
-
-//add_shortcode('adp_lista_alumnos','adp_lista_alumnos');
-function adp_lista_alumnos()
-{
-    return adp_lista_usuarios ('alumno');
-}
-
-//add_shortcode('adp_lista_pendientes_activar','adp_lista_pendientes_activar');
-function adp_lista_pendientes_activar()
-{
-    return adp_lista_usuarios ('pendiente_activar');
-}
-
-
-function adp_activar_alumno ($id_alumno)
-{   
-    $user = new \WP_User( $id_alumno );
-	$user->set_role( 'alumno' );
-}
-
-function adp_desactivar_alumno ($id_alumno)
-{   
-    $user = new \WP_User( $id_alumno );
-	$user->set_role( 'pendiente_activar' );
-}
-
-function adp_ficha_alumno($id_alumno)
-{
-    $out = 
-    '[wpmem_avatar]
-    <h5></h5>
-    <h5>Datos Personales</h5>
-    <ul>
-     	<li><strong>Nombre</strong>: ' . get_user_meta( $id_alumno->id, 'first_name', true ) . ' ' .get_user_meta( $id_alumno->id, 'last_name', true ) . '</li>
-     	<li><strong>Dirección</strong>: ' . get_user_meta( $id_alumno->id, 'addr1', true ) . ', ' . get_user_meta( $id_alumno->id, 'zip', true ) . ' - ' . get_user_meta( $id_alumno->id, 'city', true ) . ' (' . get_user_meta( $id_alumno->id, 'thestate', true ) . ')</li>
-     	<li><strong>Teléfono</strong>: ' . get_user_meta( $id_alumno->id, 'phone1', true ) . '</li>
-     	<li><strong>Email</strong>: ' . get_user_meta( $id_alumno->id, 'user_email', true ) . '</li>
-     	<li><strong>Fecha de Nacimiento</strong>: ' . get_user_meta( $id_alumno->id, 'birthdate', true ) . '</li>
-    </ul>
-    <strong><em><a href="/area-alumnos/editar-alumno">Editar</a></em></strong>
-    <h5>Licencia</h5>
-    <ul>
-     	<li>' . get_user_meta( $id_alumno->id, 'licencia_aikikan', true ) . '</li>
-    </ul>
-    <h5>Práctica</h5>
-    <ul>
-     	<li><strong>Inicio</strong>: ' . my_get_user_date(array('fecha' => 'fecha_ingreso_dojo')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_ingreso_dojo', 'fecha_fin' => '')) . '</li>
-    </ul>
-    <h5>Grados Kyu</h5>
-    <ul>
-     	<li><strong><span style="color: #ffcc00;">5º Kyu</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_5kyu')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_5kyu', 'fecha_fin' => 'fecha_4kyu')) . '</li>
-     	<li><strong><span style="color: #ff6600;">4º Kyu</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_4kyu')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_4kyu', 'fecha_fin' => 'fecha_3kyu')) . '</li>
-     	<li><strong><span style="color: #008000;">3º Kyu</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_3kyu')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_3kyu', 'fecha_fin' => 'fecha_2kyu')) . '</li>
-     	<li><strong><span style="color: #0000ff;">2º Kyu</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_2kyu')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_2kyu', 'fecha_fin' => 'fecha_1kyu')) . '</li>
-     	<li><strong><span style="color: #800000;">1º Kyu</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_1kyu')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_1kyu', 'fecha_fin' => 'fecha_shodan')) . '</li>
-    </ul>
-    <h5>Grados DAN</h5>
-    <ul>
-     	<li><strong><span style="color: #333333;">Shodan</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_shodan')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_shodan', 'fecha_fin' => 'fecha_nidan')) . '</li>
-     	<li><strong><span style="color: #333333;">Nidan</span></strong>: ' . my_get_user_date(array('fecha' => 'fecha_shodan')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_nidan', 'fecha_fin' => 'fecha_sandan')) . '</li>
-     	<li><span style="color: #333333;"><strong>Sandan</strong></span>: ' . my_get_user_date(array('fecha' => 'fecha_shodan')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_sandan', 'fecha_fin' => 'fecha_yondan')) . '</li>
-     	<li><span style="color: #333333;"><strong>Yondan</strong></span>: ' . my_get_user_date(array('fecha' => 'fecha_shodan')) . ' - ' . my_get_user_datediff(array('fecha_inicio' => 'fecha_yondan', 'fecha_fin' => '')) . '</li>
-    </ul>';
-    
-    return $out;
-}
-
-
-function adp_acciones_admin()
-{
-    $out = '';
-    
-    if (isset($_GET['accion']))
-        $accion = $_GET['accion'];
-    else
-        $accion = '';
-        
-        
-    if (isset($_GET['id_alumno']))
-        $id_alumno = $_GET['id_alumno'];
-    else 
-        $id_alumno = '';
-    
-    switch($accion)
-    {
-        case '':
-            $out = 'Lista de Alumnos<br/>'
-                . adp_lista_alumnos() . '<br/>'
-                . 'Pendiente de Activar</br>'
-                . adp_lista_pendientes_activar();
-            break;
-            
-        case 'desactivar_alumno':
-            if ($id_alumno != '')
-            {   
-                adp_desactivar_alumno ($id_alumno);
-            }
-            break;
-            
-        case 'activar_alumno':
-            if ($id_alumno != '')
-            {
-                adp_activar_alumno ($id_alumno);
-            }
-            break;
-            
-        case 'ficha_alumno':
-            //echo 'ficha_alumno';
-            if ($id_alumno != '')
-            {
-                //echo ' ' . $id_alumno;
-                $out = adp_ficha_alumno ($id_alumno);
-                
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return $out;
-    
-    
-}
-
-// ---------------------

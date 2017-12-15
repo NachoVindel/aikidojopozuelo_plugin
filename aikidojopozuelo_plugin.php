@@ -76,9 +76,10 @@ function run_aikidojopozuelo_plugin() {
 }
 
 include_once( plugin_dir_path( __FILE__ ) . 'includes/adp/adp_funciones.php' );
-add_action('admin_head','remove_personal_options');
-add_shortcode('user_date','my_get_user_date');
-add_shortcode('user_datediff','my_get_user_datediff');
-add_shortcode('adp_acciones_admin','adp_acciones_admin');
+add_action('admin_head','action_remove_personal_options');
+//add_shortcode('user_date','code_user_date');
+//add_shortcode('user_datediff','code_user_datediff');
+add_shortcode('adp_acciones_admin','code_adp_acciones_admin');
+add_shortcode('adp_ficha_alumno','code_adp_ficha_alumno');
 
 run_aikidojopozuelo_plugin();
