@@ -1,6 +1,6 @@
 <?php
 
-//include_once( plugin_dir_path( __FILE__ ) . 'includes/adp/adp_funciones.php' );
+include_once( 'wp-includes/functions.php' );
 
 class adp_Alumno
 {
