@@ -53,8 +53,9 @@ class adp_Alumno
         
         echo 'in';
         
-        if ($date->format('Ymd') != date('Ymd'))
-            return $date;
+        $d_date = date_create($date);
+        if ($d_date->format('Ymd') != date('Ymd'))
+            return $d_date;
         else
             return null;
     }
