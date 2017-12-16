@@ -83,7 +83,7 @@ class adp_Alumno
     {
         echo 'in-> '.$idAlumno;
         
-        $wpUser = get_user_by( 'id', $id_alumno);
+        $wpUser = adp_Alumno::UsuarioWP($id_alumno);
         
         
         echo $wpUser->first_name;
@@ -117,6 +117,11 @@ class adp_Alumno
     // ********** CONSTRUCTORES **********
     
     //private function ObtenerFecha
+    
+    public static function UsuarioWP ($idAlumno)
+    {
+        return new \WP_User($idAlumno);
+    }
     
     public static function Desactivar($idAlumno)
     {
