@@ -76,6 +76,9 @@ class adp_Alumno
         $wpUser = wp_get_current_user( $id_alumno );
         
         $this->Nombre = $wpUser->first_name;
+        
+        echo 'primera propiedad';
+        
         $this->Apellido = $wpUser->last_name;
         $this->Direccion = $wpUser->addr1;
         $this->Ciudad = $wpUser->city;
