@@ -85,7 +85,7 @@ class adp_Alumno
     {
         echo 'in ----v----'.$idAlumno; 
         
-        $wpUser = new WP_User($id_alumno);
+        $wpUser = new WP_User($idAlumno);
         
         
         echo $wpUser->first_name;
