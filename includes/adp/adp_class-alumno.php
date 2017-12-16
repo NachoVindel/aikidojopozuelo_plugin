@@ -73,12 +73,7 @@ class adp_Alumno
     
     private function __construct1($idAlumno) 
     {
-        echo 'in __construct1($idAlumno)<br/>';
-        echo 'id: '.$idAlumno.'<br/>';
-        
         $wpUser = wp_get_current_user( $id_alumno );
-        
-        echo $wpUser->first_name.'<br/>';
         
         $this->Nombre = $wpUser->first_name;
         $this->Apellido = $wpUser->last_name;
@@ -102,6 +97,7 @@ class adp_Alumno
         $this->FechaSandan = FechaAlumno(date_create($wpUser->fecha_sandan));
         $this->FechaYondan = FechaAlumno(date_create($wpUser->fecha_yondan));
         
+        echo 'out';
     }
     
     private function FechaAlumno($date)
