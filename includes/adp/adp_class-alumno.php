@@ -85,6 +85,8 @@ class adp_Alumno
         $this->Movil = $wpUser->phone1;
         $this->LicenciaAikikan = $wpUser->licencia_aikikan;
         
+        echo 'antes de fechas';
+        
         $this->FechaNacimiento = FechaAlumno(date_create($wpUser->birthdate));
         $this->FechaIngresoDojo = FechaAlumno(date_create($wpUser->fecha_ingreso_dojo));
         $this->Fecha5Kyu = FechaAlumno(date_create($wpUser->fecha_5kyu));
