@@ -146,9 +146,9 @@ class adp_Alumno
         
         echo 'in: '.'<br/>';
         
-        if ($examen1 != null && $examen1!='' && !empty($examen1))
+        if ($examen1 != null && $examen1!='' && !empty($examen1) && isset($examen1))
         {
-            if ($examen2 == null || $examen2=='' || empty($examen2))
+            if ($examen2 == null || $examen2=='' || empty($examen2) || !isset($examen2))
                 $examen2 = date_create();
         
             $date_diff = date_diff($examen1, $examen2);
