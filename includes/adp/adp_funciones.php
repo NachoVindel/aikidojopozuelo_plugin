@@ -283,8 +283,6 @@ function code_adp_ficha_alumno($idAlumno)
     
     $alumno = new adp_Alumno($idAlumno);
     
-    echo $alumno==null;
-    
     $out = '
     <h5></h5>
     <h5>Datos Personales</h5>
