@@ -83,7 +83,7 @@ class adp_Alumno
     {
         echo 'in-'.$idAlumno;
         
-        $wpUser = get_userdata($id_alumno);
+        $wpUser = get_user_by( 'id', $id_alumno);
         
         
         echo $wpUser->first_name;
