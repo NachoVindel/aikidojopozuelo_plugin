@@ -83,16 +83,9 @@ class adp_Alumno
     
     private function __construct1($idAlumno) 
     {
-        echo 'in:  '.$idAlumno; 
-        
         $wpUser = new WP_User($idAlumno);
         
-        
-        echo $wpUser->first_name;
-
-        
         $this->Nombre = $wpUser->first_name;
-        
         $this->Apellido = $wpUser->last_name;
         $this->Direccion = $wpUser->addr1;
         $this->Ciudad = $wpUser->city;
@@ -460,9 +453,7 @@ function code_adp_ficha_alumno($idAlumno)
         $idAlumno = null;
         
     $alumno = new adp_Alumno($idAlumno);
-    echo 'alumno: ';
-    echo $alumno->NombreCompleto();
-    
+
     $out = '
     <h5></h5>
     <h5>Datos Personales</h5>
@@ -470,7 +461,8 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Nombre</strong>:'.$alumno->NombreCompleto().'</li>
      	<li><strong>Dirección</strong>: '.$alumno->Direccion.' ,'.$alumno->CP.' - '.$alumno->Ciudad.' ('.$alumno->Comunidad.')</li>
      	<li><strong>Teléfono</strong>: '.$alumno->Movil.'</li>
-     	<li><strong>Email</strong>: '.$alumno->Email.'</li>
+     	<li><strong>Email</strong>: '.$alumno->Email.'</li>';
+     	/*
      	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).'</li>
     </ul>
     <strong><em><a href="/area-alumnos/editar-alumno">Editar</a></em></strong>
@@ -497,7 +489,7 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><span style="color: #333333;"><strong>Sandan</strong></span>: '.adp_FormatDate($alumno->FechaSandan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaSandan, $alumno->FechaYondan).'</li>
      	<li><span style="color: #333333;"><strong>Yondan</strong></span>: '.adp_FormatDate($alumno->FechaYondan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaYondan, null).'</li>
     </ul>
-    ';
+    ';*/
     return $out;
 }
 
