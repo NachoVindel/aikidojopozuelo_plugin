@@ -1,7 +1,5 @@
 <?php
 
-  include_once (ABSPATH.'wp-includes/class-wp-user.php');
-  
 class adp_Alumno
 {
     private $wpUser;
