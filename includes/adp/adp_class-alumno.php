@@ -1,6 +1,6 @@
 <?php
 
-include_once( 'wp-includes/functions.php' );
+include_once( '/wp-includes/functions.php' );
 
 class adp_Alumno
 {
