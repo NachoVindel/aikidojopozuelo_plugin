@@ -278,13 +278,13 @@ function code_adp_ficha_alumno($idAlumno)
         
     $alumno = new adp_Alumno($idAlumno);
     echo 'alumno: ';
-    echo $alumno->Nombre;
+    echo $alumno->NombreCompleto();
     
     $out = '
     <h5></h5>
     <h5>Datos Personales</h5>
     <ul>
-     	<li><strong>Nombre</strong>:'.$alumno->NombreCompleto.'</li>
+     	<li><strong>Nombre</strong>:'.$alumno->NombreCompleto().'</li>
      	<li><strong>Dirección</strong>: '.$alumno->Direccion.' ,'.$alumno->CP.' - '.$alumno->Ciudad.' ('.$alumno->Comunidad.')</li>
      	<li><strong>Teléfono</strong>: '.$alumno->Movil.'</li>
      	<li><strong>Email</strong>: '.$alumno->Email.'</li>
