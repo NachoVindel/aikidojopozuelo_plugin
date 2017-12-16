@@ -281,7 +281,7 @@ function code_adp_ficha_alumno($idAlumno)
         
     $alumno = new adp_Alumno($idAlumno);
     
-    echo 'code_adp_ficha_alumno';
+    echo $alumno==null;
     
     $out = '
     <h5></h5>
