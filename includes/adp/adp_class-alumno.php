@@ -83,7 +83,7 @@ class adp_Alumno
     
     private function __construct1($idAlumno) 
     {
-        $wpUser = new \WP_User($id_alumno );
+        $wpUser = new WP_User($id_alumno );
         
         $this->Nombre = $wpUser->first_name;
         
