@@ -144,7 +144,7 @@ class adp_Alumno
     {
         $out = '';
         
-        echo 'in: '.$examen1.'<br/>';
+        echo 'in: '.'<br/>';
         
         if ($examen1 != null && $examen1!='' && !empty($examen1))
         {
