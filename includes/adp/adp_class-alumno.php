@@ -1,7 +1,7 @@
 <?php
 
-require($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
-
+  include (ABSPATH.'wp-includes/class-wp-user.php');
+  
 class adp_Alumno
 {
     private $wpUser;
