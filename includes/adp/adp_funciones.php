@@ -474,7 +474,8 @@ function code_adp_ficha_alumno($idAlumno)
     <h5>Práctica</h5>
     <ul>
      	<li><strong>Inicio</strong>: '.adp_FormatDate($alumno->FechaIngresoDojo).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaIngresoDojo, null).'</li>
-    </ul>
+    </ul>';
+    /*
     <h5>Grados Kyu</h5>
     <ul>
      	<li><strong><span style="color: #ffcc00;">5º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha5Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha5Kyu, $alumno->Fecha4Kyu).'</li>
@@ -490,7 +491,7 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><span style="color: #333333;"><strong>Sandan</strong></span>: '.adp_FormatDate($alumno->FechaSandan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaSandan, $alumno->FechaYondan).'</li>
      	<li><span style="color: #333333;"><strong>Yondan</strong></span>: '.adp_FormatDate($alumno->FechaYondan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaYondan, null).'</li>
     </ul>
-    ';
+    ';*/
     return $out;
 }
 
