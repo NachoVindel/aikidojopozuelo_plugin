@@ -474,8 +474,7 @@ function code_adp_ficha_alumno($idAlumno)
     <h5>Práctica</h5>
     <ul>
      	<li><strong>Inicio</strong>: '.adp_FormatDate($alumno->FechaIngresoDojo).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaIngresoDojo, null).'</li>
-    </ul>';
-    /*
+    </ul>
     <h5>Grados Kyu</h5>
     <ul>
      	<li><strong><span style="color: #ffcc00;">5º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha5Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha5Kyu, $alumno->Fecha4Kyu).'</li>
@@ -483,8 +482,8 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong><span style="color: #008000;">3º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha3Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha3Kyu, $alumno->Fecha2Kyu).'</li>
      	<li><strong><span style="color: #0000ff;">2º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha2Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha2Kyu, $alumno->Fecha1Kyu).'</li>
      	<li><strong><span style="color: #800000;">1º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha1Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha1Kyu, $alumno->FechaShodan).'</li>
-    </ul>
-    <h5>Grados DAN</h5>
+    </ul>';
+    /*<h5>Grados DAN</h5>
     <ul>
      	<li><strong><span style="color: #333333;">Shodan</span></strong>: '.adp_FormatDate($alumno->FechaShodan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaShodan, $alumno->FechaNidan).'</li>
      	<li><strong><span style="color: #333333;">Nidan</span></strong>: '.adp_FormatDate($alumno->FechaNidan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaNidan, $alumno->FechaSandan).'</li>
