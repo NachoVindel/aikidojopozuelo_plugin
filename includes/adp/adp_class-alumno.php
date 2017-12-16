@@ -97,7 +97,7 @@ class adp_Alumno
         $this->FechaSandan = FechaAlumno(date_create($wpUser->fecha_sandan));
         $this->FechaYondan = FechaAlumno(date_create($wpUser->fecha_yondan));
         
-        echo 'out';
+         echo 'out';
     }
     
     private function FechaAlumno($date)
