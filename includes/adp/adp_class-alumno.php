@@ -76,7 +76,7 @@ class adp_Alumno
         echo 'in __construct1($idAlumno)<br/>';
         echo 'id: '.$idAlumno.'<br/>';
         
-        $wpUser = new \WP_User( $id_alumno );
+        $wpUser = wp_get_current_user( $id_alumno );
         
         echo $wpUser->first_name.'<br/>';
         
