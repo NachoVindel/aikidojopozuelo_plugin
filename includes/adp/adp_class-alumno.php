@@ -73,7 +73,7 @@ class adp_Alumno
     
     private function __construct1($idAlumno) 
     {
-        echo $idAlumno.'\n';
+         echo $idAlumno;
         
         $wpUser = new \WP_User( $id_alumno );
         
