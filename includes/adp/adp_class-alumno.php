@@ -81,7 +81,7 @@ class adp_Alumno
     
     private function __construct1($idAlumno) 
     {
-        $wpUser = new WP_User($id_alumno );
+        $wpUser = get_userdata($id_alumno );
         
         $this->Nombre = $wpUser->first_name;
         
@@ -114,13 +114,13 @@ class adp_Alumno
     
     public static function Desactivar($idAlumno)
     {
-        $user = new \WP_User( $id_alumno );
+        $user = get_userdata($id_alumno);
 	    $user->set_role( 'pendiente_activar' );
     }
     
     public static function Activar($idAlumno)
     {
-        $user = new \WP_User( $id_alumno );
+        $user = get_userdata( $id_alumno );
 	    $user->set_role( 'alumno' );
     }
     
