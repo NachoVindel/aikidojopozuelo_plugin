@@ -46,7 +46,18 @@ class adp_Alumno
             $this->ID = $value;
     
     }
-*/    
+*/   
+
+    private function FechaAlumno($date)
+    {
+        
+        echo 'in';
+        
+        if ($date->format('Ymd') != date('Ymd'))
+            return $date;
+        else
+            return null;
+    }
     
     // ********** CONSTRUCTORES **********
     function __construct()
@@ -77,8 +88,6 @@ class adp_Alumno
         
         $this->Nombre = $wpUser->first_name;
         
-        echo 'primera propiedad';
-        
         $this->Apellido = $wpUser->last_name;
         $this->Direccion = $wpUser->addr1;
         $this->Ciudad = $wpUser->city;
@@ -87,8 +96,6 @@ class adp_Alumno
         $this->Email = $wpUser->user_email;
         $this->Movil = $wpUser->phone1;
         $this->LicenciaAikikan = $wpUser->licencia_aikikan;
-        
-        echo 'antes de fechas';
         
         $this->FechaNacimiento = FechaAlumno(date_create($wpUser->birthdate));
         $this->FechaIngresoDojo = FechaAlumno(date_create($wpUser->fecha_ingreso_dojo));
@@ -103,14 +110,6 @@ class adp_Alumno
         $this->FechaYondan = FechaAlumno(date_create($wpUser->fecha_yondan));
         
          echo 'out';
-    }
-    
-    private function FechaAlumno($date)
-    {
-        if ($date->format('Ymd') != date('Ymd'))
-            return $date;
-        else
-            return null;
     }
         
     
