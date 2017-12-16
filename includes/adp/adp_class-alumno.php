@@ -51,8 +51,6 @@ class adp_Alumno
     private function FechaAlumno($date)
     {
         
-        echo 'in';
-        
         $d_date = date_create($date);
         if ($d_date->format('Ymd') != date('Ymd'))
             return $d_date;
@@ -109,8 +107,6 @@ class adp_Alumno
         $this->FechaNidan = $this->FechaAlumno($wpUser->fecha_nidan);
         $this->FechaSandan = $this->FechaAlumno($wpUser->fecha_sandan);
         $this->FechaYondan = $this->FechaAlumno($wpUser->fecha_yondan);
-        
-         echo 'out'; 
     }
         
     
