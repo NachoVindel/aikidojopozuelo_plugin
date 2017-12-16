@@ -83,7 +83,7 @@ class adp_Alumno
     
     private function __construct1($idAlumno) 
     {
-        echo 'in ----v----'.$idAlumno; 
+        echo 'in: '.$idAlumno; 
         
         $wpUser = new WP_User($idAlumno);
         
