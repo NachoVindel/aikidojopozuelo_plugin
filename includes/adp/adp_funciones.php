@@ -278,7 +278,7 @@ function code_adp_ficha_alumno($idAlumno)
         
     $alumno = new adp_Alumno($idAlumno);
     
-     echo $alumno->NombreCompleto;
+     echo $alumno->Nombre;
     
     $out = '
     <h5></h5>
