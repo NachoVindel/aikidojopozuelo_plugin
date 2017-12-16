@@ -276,7 +276,7 @@ function code_adp_acciones_admin()
 
 function code_adp_ficha_alumno($idAlumno)
 {
-    if ($idAlumno = "")
+    if ($idAlumno == '')
         $idAlumno = null;
         
     echo 'code_adp_ficha_alumno:'.$idAlumno;
