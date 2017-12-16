@@ -120,7 +120,7 @@ class adp_Alumno
     
     public static function UsuarioWP ($idAlumno)
     {
-        return new \WP_User($idAlumno);
+        return get_userdata($idAlumno);
     }
     
     public static function Desactivar($idAlumno)
