@@ -1,6 +1,6 @@
 <?php
 
-include_once( '/wp-includes/pluggable.php' );
+require($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
 
 class adp_Alumno
 {
@@ -83,7 +83,7 @@ class adp_Alumno
     
     private function __construct1($idAlumno) 
     {
-        $wpUser = get_user_by ( 'id', $id_alumno );
+        $wpUser = new WP_User($id_alumno );
         
         $this->Nombre = $wpUser->first_name;
         
