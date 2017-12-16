@@ -463,8 +463,7 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Teléfono</strong>: '.$alumno->Movil.'</li>
      	<li><strong>Email</strong>: '.$alumno->Email.'</li>
      	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).'</li>
-    </ul>'
-    /*
+    </ul>
     <strong><em><a href="/area-alumnos/editar-alumno">Editar</a></em></strong>
     <h5>Licencia</h5>
     <ul>
@@ -489,7 +488,7 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><span style="color: #333333;"><strong>Sandan</strong></span>: '.adp_FormatDate($alumno->FechaSandan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaSandan, $alumno->FechaYondan).'</li>
      	<li><span style="color: #333333;"><strong>Yondan</strong></span>: '.adp_FormatDate($alumno->FechaYondan).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaYondan, null).'</li>
     </ul>
-    ';*/
+    ';
     return $out;
 }
 
