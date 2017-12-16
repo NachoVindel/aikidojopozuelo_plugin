@@ -144,6 +144,8 @@ class adp_Alumno
     {
         $out = '';
         
+        echo 'in';
+        
         if ($examen1 != null)
         {
             if ($examen2 == null)
@@ -170,7 +172,7 @@ class adp_Alumno
                     $out .= $date_diff->d . ' días';
             }
         }
-        
+        echo 'out';
         return $out;
     }
     
