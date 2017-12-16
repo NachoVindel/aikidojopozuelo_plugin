@@ -258,12 +258,9 @@ function code_adp_acciones_admin()
             break;
             
         case 'ficha_alumno':
-            echo 'ficha_alumno';
             if ($id_alumno != '')
             {
-                echo ' ' . $id_alumno;
                 $out = code_adp_ficha_alumno($id_alumno);
-                
             }
             break;
             
