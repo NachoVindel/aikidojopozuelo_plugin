@@ -83,9 +83,9 @@ class adp_Alumno
     
     private function __construct1($idAlumno) 
     {
-        echo 'in-'.$idAlumno; 
+        echo 'in--'.$idAlumno; 
         
-        $wpUser = adp_Alumno::UsuarioWP($id_alumno);
+        $wpUser = get_userdata($id_alumno);
         
         
         echo $wpUser->first_name;
