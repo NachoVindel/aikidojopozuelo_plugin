@@ -98,16 +98,16 @@ class adp_Alumno
         $this->LicenciaAikikan = $wpUser->licencia_aikikan;
         
         $this->FechaNacimiento = FechaAlumno($wpUser->birthdate);
-        $this->FechaIngresoDojo = FechaAlumno(date_create($wpUser->fecha_ingreso_dojo));
-        $this->Fecha5Kyu = FechaAlumno(date_create($wpUser->fecha_5kyu));
-        $this->Fecha5Kyu = FechaAlumno(date_create($wpUser->fecha_4kyu));
-        $this->Fecha5Kyu = FechaAlumno(date_create($wpUser->fecha_3kyu));
-        $this->Fecha5Kyu = FechaAlumno(date_create($wpUser->fecha_2kyu));
-        $this->Fecha5Kyu = FechaAlumno(date_create($wpUser->fecha_1kyu));
-        $this->FechaShodan = FechaAlumno(date_create($wpUser->fecha_shodan));
-        $this->FechaNidan = FechaAlumno(date_create($wpUser->fecha_nidan));
-        $this->FechaSandan = FechaAlumno(date_create($wpUser->fecha_sandan));
-        $this->FechaYondan = FechaAlumno(date_create($wpUser->fecha_yondan));
+        $this->FechaIngresoDojo = FechaAlumno($wpUser->fecha_ingreso_dojo);
+        $this->Fecha5Kyu = FechaAlumno($wpUser->fecha_5kyu);
+        $this->Fecha5Kyu = FechaAlumno($wpUser->fecha_4kyu);
+        $this->Fecha5Kyu = FechaAlumno($wpUser->fecha_3kyu);
+        $this->Fecha5Kyu = FechaAlumno($wpUser->fecha_2kyu);
+        $this->Fecha5Kyu = FechaAlumno($wpUser->fecha_1kyu);
+        $this->FechaShodan = FechaAlumno($wpUser->fecha_shodan);
+        $this->FechaNidan = FechaAlumno($wpUser->fecha_nidan);
+        $this->FechaSandan = FechaAlumno($wpUser->fecha_sandan);
+        $this->FechaYondan = FechaAlumno($wpUser->fecha_yondan);
         
          echo 'out';
     }
