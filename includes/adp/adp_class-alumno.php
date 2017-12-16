@@ -109,7 +109,7 @@ class adp_Alumno
         $this->FechaSandan = $this->FechaAlumno($wpUser->fecha_sandan);
         $this->FechaYondan = $this->FechaAlumno($wpUser->fecha_yondan);
         
-         echo 'out';
+         echo 'out'; 
     }
         
     
