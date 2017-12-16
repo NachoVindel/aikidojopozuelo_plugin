@@ -73,10 +73,12 @@ class adp_Alumno
     
     private function __construct1($idAlumno) 
     {
-        echo 'in __construct1($idAlumno)\n';
-        echo 'id: '.$idAlumno;
+        echo 'in __construct1($idAlumno)<br/>';
+        echo 'id: '.$idAlumno.'<br/>';
         
         $wpUser = new \WP_User( $id_alumno );
+        
+        echo $wpUser->first_name.'<br/>';
         
         $this->Nombre = $wpUser->first_name;
         $this->Apellido = $wpUser->last_name;
