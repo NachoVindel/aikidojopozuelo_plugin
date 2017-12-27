@@ -183,6 +183,7 @@ class adp_Alumno
 function adp_FormatDate($date)
 {
     $out = '';
+    echo $date;
     if ($date->format('Ymd') != date('Ymd'))
     {
         $dias = array("Dom","Lun","Mar","Mie","Jue","Vie","Sab");
