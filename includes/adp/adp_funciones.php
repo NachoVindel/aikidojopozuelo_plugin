@@ -183,13 +183,15 @@ class adp_Alumno
 function adp_FormatDate($date)
 {
     $out = '';
-    echo ($date==null );
-    if ($date->format('Ymd') != date('Ymd'))
+    if ($date != null)
     {
-        $dias = array("Dom","Lun","Mar","Mie","Jue","Vie","Sab");
-        $meses = array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
-
-        $out = $dias[$date->format('w')] . ' ' . $date->format('j') . "-" . $meses[$date->format('n')-1] . "-" . $date->format('Y') ;
+        if ($date->format('Ymd') != date('Ymd'))
+        {
+            $dias = array("Dom","Lun","Mar","Mie","Jue","Vie","Sab");
+            $meses = array("Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic");
+    
+            $out = $dias[$date->format('w')] . ' ' . $date->format('j') . "-" . $meses[$date->format('n')-1] . "-" . $date->format('Y') ;
+        }
     }
     return $out;
 }
