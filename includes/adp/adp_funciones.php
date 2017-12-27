@@ -146,8 +146,6 @@ function TiempoEntreFechas($examen1, $examen2)
 {
     $out = '';
     
-    echo 'in: '.'<br/>';
-    
     if ($examen1 != null && $examen1!='' && !empty($examen1) && isset($examen1))
     {
         if ($examen2 == null || $examen2=='' || empty($examen2) || !isset($examen2))
@@ -174,7 +172,6 @@ function TiempoEntreFechas($examen1, $examen2)
                 $out .= $date_diff->d . ' días';
         }
     }
-    echo 'out';
     return $out;
 }
 
