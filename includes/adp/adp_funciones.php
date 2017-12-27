@@ -470,7 +470,8 @@ function code_adp_ficha_alumno($idAlumno)
     <h5>Licencia</h5>
     <ul>
      	<li>'.$alumno->LicenciaAikikan.'</li>
-    </ul>
+    </ul>';
+    /*
     <h5>Práctica</h5>
     <ul>
      	<li><strong>Inicio</strong>: '.adp_FormatDate($alumno->FechaIngresoDojo).' - '.adp_Alumno::TiempoEntreExamenes($alumno->FechaIngresoDojo, null).'</li>
@@ -483,6 +484,7 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong><span style="color: #0000ff;">2º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha2Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha2Kyu, $alumno->Fecha1Kyu).'</li>
      	<li><strong><span style="color: #800000;">1º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha1Kyu).' - '.adp_Alumno::TiempoEntreExamenes($alumno->Fecha1Kyu, $alumno->FechaShodan).'</li>
     </ul>';
+    */
     /*
     <h5>Grados DAN</h5>
     <ul>
