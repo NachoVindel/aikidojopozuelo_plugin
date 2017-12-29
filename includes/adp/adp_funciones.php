@@ -126,13 +126,13 @@ class adp_Alumno
     
     public static function Desactivar($idAlumno)
     {
-        $user = get_userdata($id_alumno);
+        $user = get_userdata($idAlumno);
 	    $user->set_role( 'pendiente_activar' );
     }
     
     public static function Activar($idAlumno)
     {
-        $user = get_userdata( $id_alumno );
+        $user = get_userdata($idAlumno);
 	    $user->set_role( 'alumno' );
     }
     
