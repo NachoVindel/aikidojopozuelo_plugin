@@ -6,6 +6,7 @@ class adp_Alumno
 {
     private $wpUser;
     
+    public $ID;
     public $Nombre;
     public $Apellido;
     public $Direccion;
@@ -88,6 +89,7 @@ class adp_Alumno
         else
             $wpUser = new WP_User($idAlumno);
         
+        $this->ID = $wpUser->ID;
         $this->Nombre = $wpUser->first_name;
         $this->Apellido = $wpUser->last_name;
         $this->Direccion = $wpUser->addr1;
