@@ -471,14 +471,12 @@ function code_adp_ficha_alumno($idAlumno)
     <em><strong><a href="/area-alumnos/editar-alumno">Editar</a></strong></em>
     <br/>
     <h5>Licencia</h5>
-    <ul>
-     	<li>';
+    <ul>';
      
-    $out.= ($alumno->LicenciaAikikan=="") ? ('<style color="red">SIN LICENCIA</style>') : ('<a href="'.$alumno->LicenciaAikikan.'" target="_blank">Ver Licencia</a>');
+    $out.= ($alumno->LicenciaAikikan=="") ? ('<li style="color:red">SIN LICENCIA</li>') : ('<li><a href="'.$alumno->LicenciaAikikan.'" target="_blank">Ver Licencia</a></li>');
      	
     $out.=
-     	'</li>
-    </ul>
+    '</ul>
     <h5>Práctica</h5>
     <ul>
      	<li><strong>Inicio</strong>: '.adp_FormatDate($alumno->FechaIngresoDojo).' - '.TiempoEntreFechas($alumno->FechaIngresoDojo, null).'</li>
