@@ -308,7 +308,7 @@ function adp_lista($usuarios)
 {
     if( $usuarios )
     {
-        $out.='<ul>';
+        $out.='<ul style="list-style-type: none">';
     	foreach ( $usuarios as $usuario ) 
     		$out.= '<li><a href="/admin-dojo/?accion=ficha_alumno&id_alumno=' . $usuario->id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) 
     		. '</a> (<a href="/admin-dojo/?accion=activar_alumno&id_alumno=' . $usuario->id . '">Activar</a> ' 
@@ -478,9 +478,9 @@ function code_adp_ficha_alumno($idAlumno)
 
 function adp_ListaAlumnos()
 {
-    return 'Lista de Alumnos<br/>'
+    return '<h5>Lista de Alumnos</h5>'
         . adp_lista (adp_Alumno::ListaAlumnos()) . '<br/>'
-        . 'Pendiente de Activar</br>'
+        . '<h5>Pendiente de Activar</h5>'
         . adp_lista (adp_Alumno::ListaPendientesActivar());
 }
 
