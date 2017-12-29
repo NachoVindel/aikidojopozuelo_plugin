@@ -468,13 +468,13 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Email</strong>: '.$alumno->Email.'</li>
      	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).'</li>
     </ul>
-    <em><a href="/area-alumnos/editar-alumno">Editar</a></em>
+    <em><strong><a href="/area-alumnos/editar-alumno">Editar</a></strong></em>
     <br/>
     <h5>Licencia</h5>
     <ul>
      	<li>';
      
-    $out.= ($alumno->LicenciaAikikan==null) ? ('<style color="red">SIN LICENCIA</style>') : ('<a href="'.$alumno->LicenciaAikikan.'" target="_blank">Ver Licencia</a>');
+    $out.= (!$alumno->LicenciaAikikan) ? ('<style color="red">SIN LICENCIA</style>') : ('<a href="'.$alumno->LicenciaAikikan.'" target="_blank">Ver Licencia</a>');
      	
     $out.=
      	'</li>
