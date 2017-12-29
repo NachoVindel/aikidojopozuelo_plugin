@@ -97,7 +97,7 @@ class adp_Alumno
         $this->Email = $wpUser->user_email;
         $this->Movil = $wpUser->phone1;
         
-        $this->LicenciaAikikan = ($wpUser->licencia_aikikan == null) ? null : wp_get_attachment_url($wpUser->licencia_aikikan);
+        $this->LicenciaAikikan = ($wpUser->licencia_aikikan == "") ? null : wp_get_attachment_url($wpUser->licencia_aikikan);
         
         $this->FechaNacimiento = $this->FechaAlumno($wpUser->birthdate);
         $this->FechaIngresoDojo = $this->FechaAlumno($wpUser->fecha_ingreso_dojo);
@@ -468,7 +468,7 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Email</strong>: '.$alumno->Email.'</li>
      	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).'</li>
     </ul>
-    <strong><em><a href="/area-alumnos/editar-alumno">Editar</a></em></strong>
+    <em><a href="/area-alumnos/editar-alumno">Editar</a></em>
     <br/>
     <h5>Licencia</h5>
     <ul>
