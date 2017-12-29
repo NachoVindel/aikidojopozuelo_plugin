@@ -459,7 +459,7 @@ function code_adp_ficha_alumno($idAlumno)
     $alumno = new adp_Alumno($idAlumno);
 
     $out = '
-    <h5></h5>
+    <h5>'.get_avatar($alumno->ID).'</h5>
     <h5>Datos Personales</h5>
     <ul style="list-style-type: none">
      	<li><strong>Nombre</strong>: '.$alumno->NombreCompleto().'</li>
@@ -467,8 +467,7 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Teléfono</strong>: '.$alumno->Movil.'</li>
      	<li><strong>Email</strong>: '.$alumno->Email.'</li>
      	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).' - '.TiempoEntreFechas($alumno->FechaNacimiento, null).'</li>
-     	<li/>
-     	<li><em><strong><a href="/area-alumnos/editar-alumno">>>Editar</a></strong></em></li>
+     	<li><em><a href="/area-alumnos/editar-alumno">>>Editar</a></em></li>
     </ul>
     <h5>Licencia</h5>
     <ul style="list-style-type: none">';
@@ -478,7 +477,7 @@ function code_adp_ficha_alumno($idAlumno)
     $out.=
     '</ul>
     <h5>Práctica</h5>
-    <ul style="list-style-type: none" >
+    <ul style="list-style-type: none">
      	<li><strong>Inicio</strong>: '.adp_FormatDate($alumno->FechaIngresoDojo).' - '.TiempoEntreFechas($alumno->FechaIngresoDojo, null).'</li>
     </ul>
     <h5>Grados Kyu</h5>
