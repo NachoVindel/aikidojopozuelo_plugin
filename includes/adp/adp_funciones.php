@@ -460,7 +460,7 @@ function code_adp_ficha_alumno($idAlumno)
 
     $out = '
     <h5></h5>
-    <h5>Datos Personales</h5>
+    <h5>Datos Personales<em><strong><a href="/area-alumnos/editar-alumno"> (Editar)</a></strong></em></h5>
     <ul>
      	<li><strong>Nombre</strong>: '.$alumno->NombreCompleto().'</li>
      	<li><strong>Dirección</strong>: '.$alumno->Direccion.', '.$alumno->CP.' - '.$alumno->Ciudad.' ('.$alumno->Comunidad.')</li>
@@ -468,8 +468,6 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Email</strong>: '.$alumno->Email.'</li>
      	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).'</li>
     </ul>
-    <em><strong><a href="/area-alumnos/editar-alumno">Editar</a></strong></em>
-    <br/>
     <h5>Licencia</h5>
     <ul>';
      
