@@ -145,6 +145,28 @@ class adp_Alumno
     {
         return get_users( 'role=pendiente_activar&orderby=first_name' );
     }
+    
+    /*public function ConDatosPersonales()
+    {
+        return (
+            $this->Nombre!=null &&
+            $this->Apellido!=null &&
+            $this->Direccion!=null && 
+            $this->Ciudad!=null && 
+            $this->Comunidad!=null && 
+            $this->CP!=null && 
+            $this->Movil!=null &&
+            $this->FechaNacimiento!=null
+            );
+    }
+    public function ConLicencia()
+    {
+        return ($this->LicenciaAikikan != null);
+    }
+    public function ConFechaInicio()
+    {
+        return ($this->FechaIngresoDojo != null);
+    }*/
 }
 
 
@@ -402,57 +424,6 @@ function code_user_datediff($atts)
 }
 */
 
-function code_adp_acciones_admin()
-{
-    $out = '';
-    
-    if (isset($_GET['accion']))
-        $accion = $_GET['accion'];
-    else
-        $accion = '';
-        
-    if (isset($_GET['id_alumno']))
-        $id_alumno = $_GET['id_alumno'];
-    else 
-        $id_alumno = '';
-    
-    switch($accion)
-    {
-        case '':
-            $out = 'Lista de Alumnos<br/>'
-                . adp_lista (adp_Alumno::ListaAlumnos()) . '<br/>'
-                . 'Pendiente de Activar</br>'
-                . adp_lista (adp_Alumno::ListaPendientesActivar());
-            break;
-            
-        case 'desactivar_alumno':
-            if ($id_alumno != '')
-            {   
-                adp_Alumno::Desactivar($id_alumno);
-            }
-            break;
-            
-        case 'activar_alumno':
-            if ($id_alumno != '')
-            {
-                adp_Alumno::Activar($id_alumno);
-            }
-            break;
-            
-        case 'ficha_alumno':
-            if ($id_alumno != '')
-            {
-                $out = code_adp_ficha_alumno($id_alumno);
-            }
-            break;
-            
-        default:
-            break;
-    }
-    
-    return $out;
-}
-
 function code_adp_ficha_alumno($idAlumno)
 {
     $iAdmin = false;
@@ -502,6 +473,57 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><span style="color: #333333;"><strong>Yondan</strong></span>: '.adp_FormatDate($alumno->FechaYondan).' - '.TiempoEntreFechas($alumno->FechaYondan, null).'</li>
     </ul>
     ';
+    return $out;
+}
+
+function code_adp_acciones_admin()
+{
+    $out = '';
+    
+    if (isset($_GET['accion']))
+        $accion = $_GET['accion'];
+    else
+        $accion = '';
+        
+    if (isset($_GET['id_alumno']))
+        $id_alumno = $_GET['id_alumno'];
+    else 
+        $id_alumno = '';
+    
+    switch($accion)
+    {
+        case '':
+            $out = 'Lista de Alumnos<br/>'
+                . adp_lista (adp_Alumno::ListaAlumnos()) . '<br/>'
+                . 'Pendiente de Activar</br>'
+                . adp_lista (adp_Alumno::ListaPendientesActivar());
+            break;
+            
+        case 'desactivar_alumno':
+            if ($id_alumno != '')
+            {   
+                adp_Alumno::Desactivar($id_alumno);
+            }
+            break;
+            
+        case 'activar_alumno':
+            if ($id_alumno != '')
+            {
+                adp_Alumno::Activar($id_alumno);
+            }
+            break;
+            
+        case 'ficha_alumno':
+            if ($id_alumno != '')
+            {
+                $out = code_adp_ficha_alumno($id_alumno);
+            }
+            break;
+            
+        default:
+            break;
+    }
+    
     return $out;
 }
 
