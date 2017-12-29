@@ -472,11 +472,12 @@ function code_adp_ficha_alumno($idAlumno)
     <br/>
     <h5>Licencia</h5>
     <ul>
-     	<li>'. 
+     	<li>';
+     
+    $out.= ($alumno->LicenciaAikikan==null) ? ('<style color="red">SIN LICENCIA</style>') : ('<a href="'.$alumno->LicenciaAikikan.'" target="_blank">Ver Licencia</a>');
      	
-     	($alumno->LicenciaAikikan==null) ? ('<style color="red">SIN LICENCIA</style>') : ('<a href="'.$alumno->LicenciaAikikan.'" target="_blank">Ver Licencia</a>')
-     	
-     	.'</li>
+    $out.=
+     	'</li>
     </ul>
     <h5>Práctica</h5>
     <ul>
