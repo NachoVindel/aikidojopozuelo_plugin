@@ -459,7 +459,7 @@ function code_adp_ficha_alumno($idAlumno)
     $alumno = new adp_Alumno($idAlumno);
 
     $out = '
-    <h5>'.get_avatar($alumno->ID).'</h5>
+    <h5>'.get_avatar($alumno->Email).'</h5>
     <h5>Datos Personales</h5>
     <ul style="list-style-type: none">
      	<li><strong>Nombre</strong>: '.$alumno->NombreCompleto().'</li>
