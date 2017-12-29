@@ -455,6 +455,8 @@ function code_adp_acciones_admin()
 
 function code_adp_ficha_alumno($idAlumno)
 {
+    wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/aikidojopozuelo_plugin-public.css', array(), $this->version, 'all' );
+    
     $iAdmin = false;
     ($idAlumno == '')? $idAlumno = null : $isAdmin=true;
         
