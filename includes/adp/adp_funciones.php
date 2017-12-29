@@ -453,8 +453,8 @@ function code_adp_acciones_admin()
 
 function code_adp_ficha_alumno($idAlumno)
 {
-    if ($idAlumno == '')
-        $idAlumno = null;
+    $iAdmin = false;
+    ($idAlumno == '')? $idAlumno = null : $isAdmin=true;
         
     $alumno = new adp_Alumno($idAlumno);
 
@@ -467,7 +467,11 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Teléfono</strong>: '.$alumno->Movil.'</li>
      	<li><strong>Email</strong>: '.$alumno->Email.'</li>
      	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).' - '.TiempoEntreFechas($alumno->FechaNacimiento, null).'</li>
-     	<li><em><a href="/area-alumnos/editar-alumno">>>Editar</a></em></li>
+     	<li><em><a href='.
+     	($isAdmin) ?
+     	    'http://aikidojopozuelo.com/wp-admin/user-edit.php?user_id='.$alumno->ID.'&wp_http_referer='.urlencode("/admin-dojo/?accion=ficha_alumno&id_alumno=".$alumno->ID)
+     	    :'/area-alumnos/editar-alumno/'
+     	.'>>>Editar</a></em></li>
     </ul>
     <h5>Licencia</h5>
     <ul style="list-style-type: none">';
