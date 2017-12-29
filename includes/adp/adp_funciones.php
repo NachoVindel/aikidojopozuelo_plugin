@@ -470,9 +470,9 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Email</strong>: '.$alumno->Email.'</li>
      	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).' - '.TiempoEntreFechas($alumno->FechaNacimiento, null).'</li>
      	<li><em><a href="'.
-     	($isAdmin==true) ?
+     	(($isAdmin==true) ?
      	    'http://aikidojopozuelo.com/wp-admin/user-edit.php?user_id='.$alumno->ID.'&wp_http_referer='.urlencode("/admin-dojo/?accion=ficha_alumno&id_alumno=".$alumno->ID)
-     	    :'/area-alumnos/editar-alumno/'
+     	    :'/area-alumnos/editar-alumno/')
      	.'">>>Editar</a></em></li>
     </ul>
     <h5>Licencia</h5>
