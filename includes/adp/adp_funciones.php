@@ -476,6 +476,14 @@ function code_adp_ficha_alumno($idAlumno)
     return $out;
 }
 
+function adp_ListaAlumnos()
+{
+    return 'Lista de Alumnos<br/>'
+        . adp_lista (adp_Alumno::ListaAlumnos()) . '<br/>'
+        . 'Pendiente de Activar</br>'
+        . adp_lista (adp_Alumno::ListaPendientesActivar());
+}
+
 function code_adp_acciones_admin()
 {
     $out = '';
@@ -493,10 +501,7 @@ function code_adp_acciones_admin()
     switch($accion)
     {
         case '':
-            $out = 'Lista de Alumnos<br/>'
-                . adp_lista (adp_Alumno::ListaAlumnos()) . '<br/>'
-                . 'Pendiente de Activar</br>'
-                . adp_lista (adp_Alumno::ListaPendientesActivar());
+            $out = adp_ListaAlumnos();
             break;
             
         case 'desactivar_alumno':
@@ -504,6 +509,7 @@ function code_adp_acciones_admin()
             {   
                 adp_Alumno::Desactivar($id_alumno);
             }
+            $out = adp_ListaAlumnos();
             break;
             
         case 'activar_alumno':
@@ -511,6 +517,7 @@ function code_adp_acciones_admin()
             {
                 adp_Alumno::Activar($id_alumno);
             }
+            $out = adp_ListaAlumnos();
             break;
             
         case 'ficha_alumno':
