@@ -96,7 +96,7 @@ class adp_Alumno
         $this->CP = $wpUser->zip;
         $this->Email = $wpUser->user_email;
         $this->Movil = $wpUser->phone1;
-        $this->LicenciaAikikan = $wpUser->licencia_aikikan;
+        $this->LicenciaAikikan = wp_get_attachment_url($wpUser->licencia_aikikan);
         
         $this->FechaNacimiento = $this->FechaAlumno($wpUser->birthdate);
         $this->FechaIngresoDojo = $this->FechaAlumno($wpUser->fecha_ingreso_dojo);
