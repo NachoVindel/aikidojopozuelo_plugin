@@ -469,9 +469,14 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).'</li>
     </ul>
     <strong><em><a href="/area-alumnos/editar-alumno">Editar</a></em></strong>
+    <br/>
     <h5>Licencia</h5>
     <ul>
-     	<li>'.$alumno->LicenciaAikikan.'</li>
+     	<li>'. 
+     	
+     	($alumno->LicenciaAikikan==null) ? ('<style color="red">SIN LICENCIA</style>') : ('<a href="'.$alumno->LicenciaAikikan.'">Ver Licencia</a>')
+     	
+     	.'</li>
     </ul>
     <h5>Práctica</h5>
     <ul>
