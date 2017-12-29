@@ -466,7 +466,7 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Dirección</strong>: '.$alumno->Direccion.', '.$alumno->CP.' - '.$alumno->Ciudad.' ('.$alumno->Comunidad.')</li>
      	<li><strong>Teléfono</strong>: '.$alumno->Movil.'</li>
      	<li><strong>Email</strong>: '.$alumno->Email.'</li>
-     	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).'</li>
+     	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).' - '.TiempoEntreFechas($alumno->FechaNacimiento, null).'</li>
      	<li/>
      	<li><em><strong><a href="/area-alumnos/editar-alumno">>>Editar</a></strong></em></li>
     </ul>
@@ -478,7 +478,7 @@ function code_adp_ficha_alumno($idAlumno)
     $out.=
     '</ul>
     <h5>Práctica</h5>
-    <ul style="list-style-type: none">
+    <ul style="list-style-type: none" >
      	<li><strong>Inicio</strong>: '.adp_FormatDate($alumno->FechaIngresoDojo).' - '.TiempoEntreFechas($alumno->FechaIngresoDojo, null).'</li>
     </ul>
     <h5>Grados Kyu</h5>
