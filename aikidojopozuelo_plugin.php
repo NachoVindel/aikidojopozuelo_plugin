@@ -77,6 +77,7 @@ function run_aikidojopozuelo_plugin() {
 
 include_once( plugin_dir_path( __FILE__ ) . 'includes/adp/adp_funciones.php' );
 include_once( plugin_dir_path( __FILE__ ) . 'includes/adp/adp_class-alumno.php' );
+wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/aikidojopozuelo_plugin-public.css', array(), $this->version, 'all' );
 
 add_action('admin_head','action_remove_personal_options');
 //add_shortcode('user_date','code_user_date');
