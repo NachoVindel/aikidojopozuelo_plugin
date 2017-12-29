@@ -471,18 +471,18 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><em><strong><a href="/area-alumnos/editar-alumno">>>Editar</a></strong></em></li>
     </ul>
     <h5>Licencia</h5>
-    <ul>';
+    <ul style="list-style-type: none">';
      
     $out.= ($alumno->LicenciaAikikan==null) ? ('<li style="color:red">SIN LICENCIA</li>') : ('<li><a href="'.$alumno->LicenciaAikikan.'" target="_blank">Ver Licencia</a></li>');
      	
     $out.=
     '</ul>
     <h5>Práctica</h5>
-    <ul>
+    <ul style="list-style-type: none">
      	<li><strong>Inicio</strong>: '.adp_FormatDate($alumno->FechaIngresoDojo).' - '.TiempoEntreFechas($alumno->FechaIngresoDojo, null).'</li>
     </ul>
     <h5>Grados Kyu</h5>
-    <ul>
+    <ul style="list-style-type: none">
      	<li><strong><span style="color: #ffcc00;">5º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha5Kyu).' - '.TiempoEntreFechas($alumno->Fecha5Kyu, $alumno->Fecha4Kyu).'</li>
      	<li><strong><span style="color: #ff6600;">4º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha4Kyu).' - '.TiempoEntreFechas($alumno->Fecha4Kyu, $alumno->Fecha3Kyu).'</li>
      	<li><strong><span style="color: #008000;">3º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha3Kyu).' - '.TiempoEntreFechas($alumno->Fecha3Kyu, $alumno->Fecha2Kyu).'</li>
@@ -490,7 +490,7 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong><span style="color: #800000;">1º Kyu</span></strong>: '.adp_FormatDate($alumno->Fecha1Kyu).' - '.TiempoEntreFechas($alumno->Fecha1Kyu, $alumno->FechaShodan).'</li>
     </ul>
     <h5>Grados DAN</h5>
-    <ul>
+    <ul style="list-style-type: none">
      	<li><strong><span style="color: #333333;">Shodan</span></strong>: '.adp_FormatDate($alumno->FechaShodan).' - '.TiempoEntreFechas($alumno->FechaShodan, $alumno->FechaNidan).'</li>
      	<li><strong><span style="color: #333333;">Nidan</span></strong>: '.adp_FormatDate($alumno->FechaNidan).' - '.TiempoEntreFechas($alumno->FechaNidan, $alumno->FechaSandan).'</li>
      	<li><span style="color: #333333;"><strong>Sandan</strong></span>: '.adp_FormatDate($alumno->FechaSandan).' - '.TiempoEntreFechas($alumno->FechaSandan, $alumno->FechaYondan).'</li>
