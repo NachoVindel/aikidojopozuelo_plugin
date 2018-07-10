@@ -314,7 +314,7 @@ function adp_lista($usuarios, $message)
     	foreach ( $usuarios as $usuario ) 
     		$out.= '<li';
     		
-    		if ($alumno->LicenciaAikikan==null)
+    		if ($usuario->LicenciaAikikan==null)
     		    $out.= ' style="text-decoration:color:red" ';
     		
     		$out.= '><a href="/admin-dojo/?accion=ficha_alumno&id_alumno=' . $usuario->id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) 
