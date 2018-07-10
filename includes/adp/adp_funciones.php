@@ -313,7 +313,7 @@ function adp_lista($usuarios, $message)
         $out.='<ul style="list-style-type: none">';
     	foreach ( $usuarios as $usuario )
     	{	
-    	    $alumno = new adp_Alumno($usuario->id_alumno);
+    	    $alumno = new adp_Alumno($usuario->id);
     	    
     		$out.= '<li><a href="/admin-dojo/?accion=ficha_alumno&id_alumno=' . $alumno->ID . '">'
     		. esc_html( $alumno->NombreCompleto() )
