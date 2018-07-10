@@ -313,15 +313,15 @@ function adp_lista($usuarios, $message)
         $out.='<ul style="list-style-type: none">';
     	foreach ( $usuarios as $usuario )
     	{	
-    		$out.= '<li><a href="/admin-dojo/?accion=ficha_alumno&id_alumno=' . $usuario->id . '">';
-    		
-    		if (!$usuario->licencia_aikikan)
-    		    $out.= '<img src="http://aikidojopozuelo.com/wp-content/uploads/2018/07/red_icon.png" style="width:20px; height:20px" title="SIN LICENCIA" alt="SIN LICENCIA">';
-    		
-    		$out.= esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) 
+    		$out.= '<li><a href="/admin-dojo/?accion=ficha_alumno&id_alumno=' . $usuario->id . '">'
+    		. esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) 
     		. '</a> (<a href="/admin-dojo/?accion=activar_alumno&id_alumno=' . $usuario->id . '">Activar</a> ' 
     		. '- <a href="/admin-dojo/?accion=desactivar_alumno&id_alumno=' . $usuario->id . '">Desactivar</a> '
     		. '- <a href="/wp-admin/user-edit.php?user_id=' . $usuario->id . '&wp_http_referer=%2Fadmin%2">Editar</a>)';
+    		
+    		if (!$usuario->licencia_aikikan || $usuario->licencia_aikikan=='')
+    		    $out.= '<img src="http://aikidojopozuelo.com/wp-content/uploads/2018/07/red_icon.png" style="width:20px; height:20px" title="SIN LICENCIA" alt="SIN LICENCIA">';
+    		
     	}
     	$out.='</ul>';
     } 
