@@ -316,7 +316,7 @@ function adp_lista($usuarios, $message)
     		$out.= '<li><a href="/admin-dojo/?accion=ficha_alumno&id_alumno=' . $usuario->id . '">';
     		
     		if (!$usuario->licencia_aikikan)
-    		    $out.= '<img src="http://aikidojopozuelo.com/wp-content/uploads/2018/07/red_icon.png" style="width:82px; height:86px" title="White flower" alt="Flower">';
+    		    $out.= '<img src="http://aikidojopozuelo.com/wp-content/uploads/2018/07/red_icon.png" style="width:2px; height:2px" title="SIN LICENCIA" alt="SIN LICENCIA">';
     		
     		$out.= esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) 
     		. '</a> (<a href="/admin-dojo/?accion=activar_alumno&id_alumno=' . $usuario->id . '">Activar</a> ' 
