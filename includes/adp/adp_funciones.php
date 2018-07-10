@@ -311,7 +311,8 @@ function adp_lista($usuarios, $message)
     if( $usuarios )
     {
         $out.='<ul style="list-style-type: none">';
-    	foreach ( $usuarios as $usuario ) 
+    	foreach ( $usuarios as $usuario )
+    	{
     		$out.= '<li';
     		
     		//if ($usuario->licencia_aikikan==null)
@@ -321,7 +322,7 @@ function adp_lista($usuarios, $message)
     		. '</a> (<a href="/admin-dojo/?accion=activar_alumno&id_alumno=' . $usuario->id . '">Activar</a> ' 
     		. '- <a href="/admin-dojo/?accion=desactivar_alumno&id_alumno=' . $usuario->id . '">Desactivar</a> '
     		. '- <a href="/wp-admin/user-edit.php?user_id=' . $usuario->id . '&wp_http_referer=%2Fadmin%2">Editar</a>)';
-    	
+    	}
     	$out.='</ul>';
     } 
     else
