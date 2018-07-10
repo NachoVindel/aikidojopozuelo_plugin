@@ -313,7 +313,7 @@ function adp_lista($usuarios, $message)
         $out.='<ul style="list-style-type: none">';
     	foreach ( $usuarios as $usuario )
     	{
-    		$out.= '<li><a ';
+    		$out.= '<li><a '; 
     		
     		if (!$usuario->licencia_aikikan)
     		    $out.= ' style="text-decoration:color:red" ';
