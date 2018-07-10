@@ -16,6 +16,7 @@ class adp_Alumno
     public $Email;
     public $Movil;
     public $FechaNacimiento;
+    public $DNI;
     
     public $FechaIngresoDojo;
     public $Fecha5Kyu;
@@ -98,6 +99,7 @@ class adp_Alumno
         $this->CP = $wpUser->zip;
         $this->Email = $wpUser->user_email;
         $this->Movil = $wpUser->phone1;
+        $this->DNI = $wpUser->DNI;
         
         $this->LicenciaAikikan = (!($wpUser->licencia_aikikan)) ? null : wp_get_attachment_url($wpUser->licencia_aikikan);
         
@@ -304,7 +306,7 @@ function adp_user_get_date($fecha='')
 
 
 
-function adp_lista($usuarios)
+function adp_lista($usuarios, $message)
 {
     if( $usuarios )
     {
@@ -318,7 +320,7 @@ function adp_lista($usuarios)
     	$out.='</ul>';
     } 
     else
-    	$out.= 'No hay usuarios con el rol de "' . $rol . '"';
+    	$out.= 'No hay "' . $message . '"';
     
     return $out;
 }
@@ -440,6 +442,7 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><strong>Teléfono</strong>: '.$alumno->Movil.'</li>
      	<li><strong>Email</strong>: '.$alumno->Email.'</li>
      	<li><strong>Fecha de Nacimiento</strong>: '.adp_FormatDate($alumno->FechaNacimiento).' - '.TiempoEntreFechas($alumno->FechaNacimiento, null).'</li>
+     	<li><strong>DNI</strong>: '.$alumno->DNI.'</li>
      	<li><em><a href="'.
      	(($isAdmin==true) ?
      	    'http://aikidojopozuelo.com/wp-admin/user-edit.php?user_id='.$alumno->ID.'&wp_http_referer='.urlencode("/admin-dojo/?accion=ficha_alumno&id_alumno=".$alumno->ID)
@@ -479,9 +482,9 @@ function code_adp_ficha_alumno($idAlumno)
 function adp_ListaAlumnos()
 {
     return '<h5>Lista de Alumnos</h5>'
-        . adp_lista (adp_Alumno::ListaAlumnos()) . '<br/>'
+        . adp_lista (adp_Alumno::ListaAlumnos(), 'Alumnos Activos') . '<br/>'
         . '<h5>Pendiente de Activar</h5>'
-        . adp_lista (adp_Alumno::ListaPendientesActivar());
+        . adp_lista (adp_Alumno::ListaPendientesActivar(), 'Alumnos Pendientes de Activar');
 }
 
 function code_adp_acciones_admin()
