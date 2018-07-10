@@ -319,7 +319,7 @@ function adp_lista($usuarios, $message)
     		. '- <a href="/admin-dojo/?accion=desactivar_alumno&id_alumno=' . $usuario->id . '">Desactivar</a> '
     		. '- <a href="/wp-admin/user-edit.php?user_id=' . $usuario->id . '&wp_http_referer=%2Fadmin%2">Editar</a>)';
     		
-    		if (!$usuario->licencia_aikikan || $usuario->licencia_aikikan=='')
+    		if (!$usuario->licencia_aikikan || $usuario->licencia_aikikan=='') 
     		    $out.= '<img src="http://aikidojopozuelo.com/wp-content/uploads/2018/07/red_icon.png" style="width:20px; height:20px" title="SIN LICENCIA" alt="SIN LICENCIA">';
     		
     	}
