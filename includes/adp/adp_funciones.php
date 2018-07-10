@@ -312,8 +312,6 @@ function adp_lista($usuarios, $message)
     {
         $out.='<ul style="list-style-type: none">';
     	foreach ( $usuarios as $usuario ) 
-    		$out.= '<li';
-    		
     		$out.= ($alumno->LicenciaAikikan==null) ? ('<li style="text-decoration:color:red"') : ('<li');
     		
     		$out.= '><a href="/admin-dojo/?accion=ficha_alumno&id_alumno=' . $usuario->id . '">' . esc_html( $usuario->first_name ) . ' ' . esc_html( $usuario->last_name ) 
