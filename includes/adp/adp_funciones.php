@@ -502,7 +502,7 @@ function adp_crear_blog_de_alumno($alumno)
     $post_id = -1;
 	$post_id = wp_insert_post($new_post);
 	if ($post_id != -1) 
-	    update_user_meta( $alumno->ID, "id_personal_blog", $post_id);
+	    update_user_meta( $alumno->ID, 'id_personal_blog', $post_id);
 
 	/*******************************************************
 	** SIMPLE ERROR CHECKING
