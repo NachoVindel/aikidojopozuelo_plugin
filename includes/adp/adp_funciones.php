@@ -547,7 +547,7 @@ function code_adp_acciones_admin()
 
 function code_adp_asistencia_mensual()
 {
-    return '[dbview name="dbview_asistencia_count" ]';
+    return '[dbview name="dbview_asistencia_count" 3]';
 }
 
 /***************************************************
