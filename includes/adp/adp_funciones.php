@@ -591,7 +591,10 @@ function code_adp_ficha_alumno($idAlumno)
     </ul>
     ';
     
-     $out.= do_shortcode('[ic_add_posts ids=\''.$alumno->IdBlogPersonal.'\' post_status=\'private\']');
+     if ($alumno->ID = 1)
+        $out.= do_shortcode('[ic_add_posts post_status=\'private\']');
+     else
+        $out.= do_shortcode('[ic_add_posts ids=\''.$alumno->IdBlogPersonal.'\' post_status=\'private\']');
     
     return $out;
 }
