@@ -447,8 +447,8 @@ function adp_crear_blog_de_alumno($alumno)
     //echo 'dentro';
     
     $leadTitle = 'Aiki-Blog Personal de ' . $alumno->NombreCompleto() . ' (' . $alumno->DNI . ')';
-    
-    if (get_page_by_title($leadTitle) != null)
+
+    if (get_page_by_title($leadTitle, OBJECT, 'post') != null)
         return;
 
 	/*******************************************************
@@ -475,7 +475,7 @@ function adp_crear_blog_de_alumno($alumno)
 	$minuteCounter = $iCounter * $minuteIncrement; // setting how far out in time to post if future.
 	$minuteCounter = $minuteCounter + $adjustClockMinutes; // adjusting for server timezone
 
-	$timeStamp = date('Y-m-d H:i:s', strtotime("+$minuteCounter min")); // format needed for WordPress
+	$timeStamp = date('Y-m-d H:i:s');//, strtotime("+$minuteCounter min")); // format needed for WordPress
 
 	/*******************************************************
 	** WordPress Array and Variables for posting
