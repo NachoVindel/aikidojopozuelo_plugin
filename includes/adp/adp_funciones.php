@@ -552,7 +552,7 @@ function code_adp_asistencia_mensual()
     else
         $month = '';
         
-    return do_shortcode('[dbview name=\'dbview_asistencia_count\' arg1=\''
+    return do_shortcode('[dbview name=\'dbview_asistencia_count_año_mes\' arg1=\''
         . $month
         . '\']');
 }
