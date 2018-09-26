@@ -547,8 +547,7 @@ function code_adp_acciones_admin()
 
 function code_adp_asistencia_mensual()
 {
-    echo do_shortcode('[dbview name=\'dbview_asistencia_count\']');
-    return "";
+    return do_shortcode('[dbview name=\'dbview_asistencia_count\']');
 }
 
 /***************************************************
