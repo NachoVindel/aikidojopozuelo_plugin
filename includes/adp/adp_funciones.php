@@ -443,9 +443,11 @@ function code_user_datediff($atts)
 
 function adp_crear_blog_de_alumno($alumno)
 {
+    //echo 'dentro';
+    
     $leadTitle = 'Blog Personal de ' . $alumno->NombreCompleto . '(' . $alumno->DNI . ')';
     
-    if (get_page_by_tittle($leadTitle) != null)
+    if (get_page_by_title($leadTitle) != null)
         return;
 
 	/*******************************************************
