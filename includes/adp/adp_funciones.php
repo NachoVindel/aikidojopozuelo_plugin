@@ -29,6 +29,8 @@ class adp_Alumno
     public $FechaSandan;
     public $FechaYondan;
     
+    public $IdBlogPersonal;
+    
     public function NombreCompleto()
     {
          return $this->Nombre.' '.$this->Apellido;
@@ -114,6 +116,8 @@ class adp_Alumno
         $this->FechaNidan = $this->FechaAlumno($wpUser->fecha_nidan);
         $this->FechaSandan = $this->FechaAlumno($wpUser->fecha_sandan);
         $this->FechaYondan = $this->FechaAlumno($wpUser->fecha_yondan);
+        
+        $this->IdBlogPersonal = $wpUser->id_personal_blog;
         
     }
         
@@ -495,7 +499,10 @@ function adp_crear_blog_de_alumno($alumno)
 	** WordPress Post Function
 	*******************************************************/
 
+    $post_id = -1;
 	$post_id = wp_insert_post($new_post);
+	if ($post_id != -1)
+	    update_user_meta( $alumno->ID, "id_personal_blog", $post_id);
 
 	/*******************************************************
 	** SIMPLE ERROR CHECKING
@@ -567,6 +574,9 @@ function code_adp_ficha_alumno($idAlumno)
      	<li><span style="color: #333333;"><strong>Yondan</strong></span>: '.adp_FormatDate($alumno->FechaYondan).' - '.TiempoEntreFechas($alumno->FechaYondan, null).'</li>
     </ul>
     ';
+    
+     $out.= do_shortcode('[ic_add_posts ids=\''.$alumno->IdBlogPersonal.'\' post_status=\'private\']');
+    
     return $out;
 }
 
@@ -636,9 +646,7 @@ function code_adp_asistencia_mensual()
     else
         $month = date("Y") . '-' . date("m");
     
-    return do_shortcode('[dbview name=\'dbview_asistencia_count_año_mes\' arg1=\''
-        . $month
-        . '\']');
+    return do_shortcode('[dbview name=\'dbview_asistencia_count_año_mes\' arg1=\''.$month.'\']');
         
 }
 
