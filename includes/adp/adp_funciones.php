@@ -445,7 +445,7 @@ function adp_crear_blog_de_alumno($alumno)
 {
     //echo 'dentro';
     
-    $leadTitle = 'Aiki-Blog Personal de ' . $alumno->NombreCompleto() . '(' . $alumno->DNI . ')';
+    $leadTitle = 'Aiki-Blog Personal de ' . $alumno->Nombre . '(' . $alumno->DNI . ')';
     
     if (get_page_by_title($leadTitle) != null)
         return;
