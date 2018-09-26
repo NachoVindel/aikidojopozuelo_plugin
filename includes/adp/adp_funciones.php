@@ -141,7 +141,8 @@ class adp_Alumno
     
     public static function CrearBlog($idAlumno)
     {
-        $alumno = new adp_Alumno($idAlumno);
+        $user = get_userdata($idAlumno);
+        $alumno = new adp_Alumno($user->ID);
         adp_crear_blog_de_alumno($alumno);
     }
     
