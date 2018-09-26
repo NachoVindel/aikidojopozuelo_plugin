@@ -550,7 +550,7 @@ function code_adp_asistencia_mensual()
     if (isset($_GET['month']))
         $month = $_GET['month'];
     else
-        $month = '';
+        $month = date("Y") . '-' . date("mm");
         
     return do_shortcode('[dbview name=\'dbview_asistencia_count_año_mes\' arg1=\''
         . $month
