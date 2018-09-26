@@ -141,8 +141,8 @@ class adp_Alumno
     
     public static function CrearBlog($idAlumno)
     {
-        $user = get_userdata($idAlumno);
-        adp_crear_blog_de_alumno($user);
+        $alumno = new adp_Alumno($idAlumno);
+        adp_crear_blog_de_alumno($alumno);
     }
     
     public static function ListaAlumnos()
@@ -445,7 +445,7 @@ function adp_crear_blog_de_alumno($alumno)
 {
     //echo 'dentro';
     
-    $leadTitle = 'Aiki-Blog Personal de ' . $alumno->Nombre . '(' . $alumno->DNI . ')';
+    $leadTitle = 'Aiki-Blog Personal de ' . $alumno->NombreCompleto() . '(' . $alumno->DNI . ')';
     
     if (get_page_by_title($leadTitle) != null)
         return;
