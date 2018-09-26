@@ -489,7 +489,7 @@ function code_adp_ficha_alumno($idAlumno)
 
 function adp_ListaAlumnos()
 {
-    return '<h5>Lista de Alumnos5</h5>'
+    return '<h5>Lista de Alumnos</h5>'
         . adp_lista (adp_Alumno::ListaAlumnos(), 'Alumnos Activos') . '<br/>'
         . '<h5>Pendiente de Activar</h5>'
         . adp_lista (adp_Alumno::ListaPendientesActivar(), 'Alumnos Pendientes de Activar');
