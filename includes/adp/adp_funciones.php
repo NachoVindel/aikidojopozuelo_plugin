@@ -460,7 +460,7 @@ function adp_crear_blog_de_alumno($alumno)
 	$categoryID = '24'; // set to category id.
 	$postStatus = 'publish';  // set to future, draft, or publish
 
-	$leadContent = '<p>Hola ' . $alumno->Nombre . '. En este blog intercambiaremos la información sobre tu evolución. Puedes escribirme o preguntarme lo que quieras. Yo lo utilizaré para dejarte notas, comentarios o cualquier cosa que pueda ayudarte de cara a tu evolución. Nadie más que tú y yo veremos este blog.</p>';
+	$leadContent = '<p>Hola ' . $alumno->Nombre . '!</p><p>En este blog intercambiaremos la información sobre tu evolución.</p><p>Puedes escribirme o preguntarme lo que quieras. Yo lo utilizaré para dejarte notas, comentarios o cualquier cosa que pueda ayudarte de cara a tu evolución. Nadie más que tú y yo veremos este blog.</p>';
 
 	/*******************************************************
 	** TIME VARIABLES / CALCULATIONS
