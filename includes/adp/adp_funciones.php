@@ -446,7 +446,7 @@ function adp_crear_blog_de_alumno($alumno)
 {
     //echo 'dentro';
     
-    $leadTitle = 'Aiki-Blog Personal de ' . $alumno->NombreCompleto() . '(' . $alumno->DNI . ')';
+    $leadTitle = 'Aiki-Blog Personal de ' . $alumno->NombreCompleto() . ' (' . $alumno->DNI . ')';
     
     if (get_page_by_title($leadTitle) != null)
         return;
@@ -456,7 +456,7 @@ function adp_crear_blog_de_alumno($alumno)
 	*******************************************************/
 
 	$postType = 'post'; // set to post or page
-	$userID = 1; // set to user id
+	$userID = $alumno->ID; // set to user id
 	$categoryID = '24'; // set to category id.
 	$postStatus = 'publish';  // set to future, draft, or publish
 
