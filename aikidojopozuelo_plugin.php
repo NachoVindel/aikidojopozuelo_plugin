@@ -83,5 +83,6 @@ add_action('admin_head','action_remove_personal_options');
 //add_shortcode('user_datediff','code_user_datediff');
 add_shortcode('adp_acciones_admin','code_adp_acciones_admin');
 add_shortcode('adp_ficha_alumno','code_adp_ficha_alumno');
+add_shortcode('adp_asistencia_mensual','code_adp_asistencia_mensual');
 
 run_aikidojopozuelo_plugin();
