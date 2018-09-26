@@ -503,6 +503,22 @@ function adp_crear_blog_de_alumno($alumno)
 	$post_id = wp_insert_post($new_post);
 	if ($post_id != -1) 
 	    update_user_meta( $alumno->ID, 'id_personal_blog', $post_id);
+	    
+	$commenttext .=
+	    'Bienvenido!!';
+	$commentdata = array(
+    	'comment_post_ID' => $post_id, // to which post the comment will show up
+    	'comment_author' => 'Nacho Vindel', //fixed value - can be dynamic 
+    	'comment_author_email' => 'nacho.vindel@gmail.com', //fixed value - can be dynamic 
+    	'comment_author_url' => '', //fixed value - can be dynamic 
+    	'comment_content' => $commenttext, //fixed value - can be dynamic 
+    	'comment_type' => '', //empty for regular comments, 'pingback' for pingbacks, 'trackback' for trackbacks
+    	'comment_parent' => 0, //0 if it's not a reply to another comment; if it's a reply, mention the parent comment ID here
+    	'user_id' => 1, //passing current user ID or any predefined as per the demand
+    );
+    
+    //Insert new comment and get the comment ID
+    $comment_id = wp_new_comment( $commentdata );
 
 	/*******************************************************
 	** SIMPLE ERROR CHECKING
